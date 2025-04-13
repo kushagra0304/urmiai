@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "buildCommand": "npm run build",
+  "buildCommand": "npm run build:client-only",
   "installCommand": "npm install",
   "framework": null,
   "outputDirectory": "build/client",
@@ -20,5 +20,6 @@
       "src": "/(.*)",
       "dest": "/index.html"
     }
-  ]
+  ],
+  "ignoreCommand": "git diff --quiet HEAD^ HEAD ./build/server"
 } 

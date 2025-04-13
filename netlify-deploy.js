@@ -8,13 +8,18 @@ console.log('🚀 Starting Netlify deployment preparation');
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// Ensure client build directory exists
-const clientDir = path.join(__dirname, 'build', 'client');
+// Define paths
+const buildDir = path.join(__dirname, 'build');
+const clientDir = path.join(buildDir, 'client');
+
+console.log(`📁 Using build directory: ${buildDir}`);
+console.log(`📁 Using client directory: ${clientDir}`);
+
+// Ensure client directory exists
 if (!fs.existsSync(clientDir)) {
+  console.log('⚠️ Client directory not found, it should have been created by the build process.');
+  console.log('⚠️ Will proceed anyway and create necessary files.');
   fs.mkdirSync(clientDir, { recursive: true });
-  console.log(`📁 Created client build directory at ${clientDir}`);
-} else {
-  console.log(`📁 Using existing client build directory at ${clientDir}`);
 }
 
 // Create _redirects file for SPA routing
