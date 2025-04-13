@@ -20,6 +20,5 @@
       "src": "/(.*)",
       "dest": "/index.html"
     }
-  ],
-  "ignoreCommand": "git diff --quiet HEAD^ HEAD ./build/server"
+  ]
 } 
