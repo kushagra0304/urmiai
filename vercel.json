@@ -3,30 +3,22 @@
   "buildCommand": "npm run build",
   "installCommand": "npm install",
   "framework": null,
-  "outputDirectory": "build",
+  "outputDirectory": "build/client",
   "routes": [
     {
-      "src": "/build/(.*)",
-      "dest": "/build/$1"
-    },
-    {
       "src": "/assets/(.*)",
-      "dest": "/build/client/assets/$1"
+      "dest": "/assets/$1"
     },
     {
       "src": "/favicon.ico",
-      "dest": "/build/client/favicon.ico"
+      "dest": "/favicon.ico"
+    },
+    {
+      "handle": "filesystem"
     },
     {
       "src": "/(.*)",
-      "dest": "/api/server.js"
+      "dest": "/index.html"
     }
-  ],
-  "functions": {
-    "api/server.js": {
-      "memory": 1024,
-      "maxDuration": 10,
-      "includeFiles": "build/**"
-    }
-  }
+  ]
 } 
