@@ -4,11 +4,16 @@
   "installCommand": "npm install",
   "framework": null,
   "outputDirectory": "build",
-  "rewrites": [
-    { "source": "/(.*)", "destination": "/api/server.js" }
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/api/server.js"
+    }
   ],
   "functions": {
     "api/server.js": {
+      "memory": 1024,
+      "maxDuration": 10,
       "includeFiles": "build/**"
     }
   }
