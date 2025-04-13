@@ -3,11 +3,13 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "react-router build",
+    "build": "react-router build && npm run copy-redirects",
     "dev": "react-router dev",
     "start": "react-router-serve ./build/server/index.js",
     "typecheck": "react-router typegen && tsc",
-    "deploy": "vercel --prod"
+    "deploy": "vercel --prod",
+    "copy-redirects": "cp -f public/_redirects build/client/_redirects || true",
+    "build:netlify": "react-router build && npm run copy-redirects"
   },
   "dependencies": {
     "@react-router/node": "^7.5.0",

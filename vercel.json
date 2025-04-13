@@ -6,6 +6,18 @@
   "outputDirectory": "build",
   "routes": [
     {
+      "src": "/build/(.*)",
+      "dest": "/build/$1"
+    },
+    {
+      "src": "/assets/(.*)",
+      "dest": "/build/client/assets/$1"
+    },
+    {
+      "src": "/favicon.ico",
+      "dest": "/build/client/favicon.ico"
+    },
+    {
       "src": "/(.*)",
       "dest": "/api/server.js"
     }
