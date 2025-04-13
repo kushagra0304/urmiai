@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "buildCommand": "npm run build",
+  "installCommand": "npm install",
+  "framework": null,
+  "outputDirectory": "build",
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/api/server.js" }
+  ],
+  "functions": {
+    "api/server.js": {
+      "includeFiles": "build/**"
+    }
+  }
+} 

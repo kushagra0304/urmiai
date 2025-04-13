@@ -1,0 +1,503 @@
+/* Importing Dashboard styles */
+@import '../components/dashboard/Dashboard.css';
+
+/* Mobile Navbar */
+.mobile-navbar {
+  display: none;
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background-color: #1A1A1A;
+  border-bottom: 1px solid #333;
+  padding: 0 16px;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 100;
+}
+
+.menu-toggle {
+  background: none;
+  border: none;
+  color: #f1f1f1;
+  cursor: pointer;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.navbar-logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo-svg {
+  height: 24px;
+}
+
+.navbar-right {
+  display: flex;
+  align-items: center;
+}
+
+.page-title {
+  font-size: 16px;
+  font-weight: 500;
+  color: #f1f1f1;
+}
+
+/* Call Logs Page Styles */
+.call-logs-page {
+  padding: 10px 20px;
+  height: calc(100vh - 60px);
+  overflow-y: auto;
+}
+
+.breadcrumb {
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.breadcrumb-item {
+  font-size: 12px;
+  color: #f1f1f1;
+  font-weight: 600;
+  padding-left: 16px;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.breadcrumb-item::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 12px;
+  height: 12px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23f1f1f1' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M9 3H5a2 2 0 0 0-2 2v4M9 3h10a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+}
+
+.logs-content {
+  padding: 10px 0;
+}
+
+.logs-title {
+  font-size: 22px;
+  font-weight: 400;
+  margin-bottom: 15px;
+  color: #f1f1f1;
+}
+
+/* Stats Cards */
+.stats-cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.stat-card {
+  background-color: #1E1E1E;
+  border-radius: 6px;
+  padding: 12px 15px;
+}
+
+.stat-name {
+  font-size: 14px;
+  color: #8a8a8a;
+  margin-bottom: 5px;
+}
+
+.stat-value {
+  font-size: 20px;
+  font-weight: 500;
+  color: #f1f1f1;
+}
+
+/* Filter Pills */
+.filter-row {
+  display: flex;
+  justify-content: space-between;
+  margin: 15px 0;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.filter-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.filter-pill {
+  display: flex;
+  align-items: center;
+  background-color: #1E1E1E;
+  padding: 4px 10px;
+  border-radius: 50px;
+  font-size: 13px;
+  cursor: pointer;
+  color: #8a8a8a;
+}
+
+.filter-pill.active {
+  background-color: rgba(59, 130, 246, 0.15);
+  color: #5b9cf6;
+}
+
+.pill-icon {
+  margin-right: 5px;
+  font-size: 14px;
+}
+
+.filter-pill.active .pill-icon {
+  color: #5b9cf6;
+}
+
+/* Export Button */
+.export-button {
+  display: flex;
+  align-items: center;
+  background-color: #1E1E1E;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 13px;
+  margin-left: auto;
+}
+
+.export-icon {
+  margin-left: 5px;
+  font-size: 12px;
+}
+
+/* Table Styles */
+.logs-table-wrapper {
+  background-color: #1E1E1E;
+  border-radius: 6px;
+  overflow: auto;
+  max-height: calc(100vh - 260px);
+}
+
+.logs-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.logs-table th,
+.logs-table td {
+  padding: 10px 15px;
+  text-align: left;
+  font-size: 13px;
+  border-bottom: 1px solid #303030;
+}
+
+.logs-table th {
+  position: sticky;
+  top: 0;
+  background-color: #1E1E1E;
+  color: #8a8a8a;
+  font-weight: 500;
+  z-index: 1;
+}
+
+.logs-table tr:last-child td {
+  border-bottom: none;
+}
+
+.logs-table tr:hover {
+  background-color: #252525;
+}
+
+.checkbox-col {
+  width: 30px;
+}
+
+.sortable {
+  display: flex;
+  align-items: center;
+}
+
+.sort-icon {
+  margin-left: 5px;
+  font-size: 10px;
+}
+
+/* Cell Styles */
+.id-cell {
+  display: flex;
+  align-items: center;
+}
+
+.id-text {
+  font-family: monospace;
+  color: #aaa;
+  font-size: 12px;
+}
+
+.copy-btn {
+  background: none;
+  border: none;
+  color: #8a8a8a;
+  cursor: pointer;
+  opacity: 0;
+  margin-left: 5px;
+  padding: 0;
+  transition: opacity 0.2s;
+}
+
+.log-item:hover .copy-btn {
+  opacity: 1;
+}
+
+.assistant-cell,
+.phone-cell {
+  display: flex;
+  flex-direction: column;
+}
+
+.assistant-name {
+  color: #f1f1f1;
+}
+
+.assistant-id,
+.phone-type {
+  font-size: 11px;
+  color: #8a8a8a;
+  margin-top: 2px;
+}
+
+.phone-number {
+  color: #f1f1f1;
+}
+
+.customer-phone-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.customer-phone-badge {
+  display: inline-flex;
+  align-items: center;
+  background-color: rgba(96, 165, 250, 0.15);
+  color: #60a5fa;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 11px;
+  max-width: fit-content;
+}
+
+.channel-icon {
+  margin-right: 4px;
+  display: flex;
+  align-items: center;
+}
+
+.channel-text {
+  font-weight: 500;
+}
+
+.ended-reason {
+  display: inline-flex;
+  align-items: center;
+  background-color: rgba(59, 130, 246, 0.15);
+  color: #60a5fa;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 11px;
+}
+
+.na-text {
+  color: #8a8a8a;
+}
+
+.eval-badge {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 11px;
+  text-align: center;
+  min-width: 45px;
+}
+
+.eval-badge.fail {
+  background-color: rgba(239, 68, 68, 0.15);
+  color: #EF4444;
+}
+
+.eval-badge.pass {
+  background-color: rgba(34, 197, 94, 0.15);
+  color: #22C55E;
+}
+
+/* Ask AI Button */
+.ask-ai {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 100;
+}
+
+.ask-ai-btn {
+  display: flex;
+  align-items: center;
+  background-color: #333;
+  color: #f1f1f1;
+  border: none;
+  border-radius: 50px;
+  padding: 8px 15px;
+  font-size: 14px;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: #22C55E;
+  margin-left: 8px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+/* Responsive styles - Tablet */
+@media (max-width: 1200px) {
+  .stats-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .filter-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .export-button {
+    margin-left: 0;
+    margin-top: 10px;
+  }
+}
+
+/* Responsive styles - Mobile */
+@media (max-width: 768px) {
+  /* Show mobile navbar */
+  .mobile-navbar {
+    display: flex;
+  }
+  
+  /* Hide sidebar by default on mobile */
+  .sidebar {
+    transform: translateX(-100%);
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    z-index: 200;
+    box-shadow: none;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .sidebar.open {
+    transform: translateX(0);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  }
+  
+  /* Adjust main content for mobile */
+  .main-content {
+    margin-left: 0;
+    width: 100%;
+  }
+  
+  .call-logs-page {
+    padding: 10px;
+    height: calc(100vh - 60px);
+    padding-top: 0;
+  }
+  
+  /* Hide the breadcrumb on mobile as we show page title in navbar */
+  .breadcrumb {
+    display: none;
+  }
+  
+  /* Adjust stat cards */
+  .stats-cards {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+  
+  .stat-card {
+    padding: 8px 12px;
+  }
+  
+  .stat-value {
+    font-size: 18px;
+  }
+  
+  /* Make filter pills scroll horizontally */
+  .filter-pills {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    width: 100%;
+    padding-bottom: 10px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none; /* Firefox */
+  }
+  
+  .filter-pills::-webkit-scrollbar {
+    display: none; /* Chrome, Safari and Opera */
+  }
+  
+  .filter-pill {
+    flex-shrink: 0;
+  }
+  
+  /* Responsive table with horizontal scroll */
+  .logs-table-wrapper {
+    max-height: calc(100vh - 300px);
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  /* Set a minimum width for the table to ensure it can be scrolled horizontally */
+  .logs-table {
+    min-width: 900px;
+  }
+  
+  /* Ask AI button positioning */
+  .ask-ai {
+    bottom: 10px;
+    right: 10px;
+  }
+  
+  .ask-ai-btn {
+    padding: 6px 12px;
+    font-size: 13px;
+  }
+  
+  .avatar {
+    width: 20px;
+    height: 20px;
+    font-size: 10px;
+  }
+}
+
+/* Very small screens */
+@media (max-width: 480px) {
+  .stats-cards {
+    grid-template-columns: 1fr;
+  }
+  
+  .logs-table th,
+  .logs-table td {
+    padding: 8px;
+  }
+} 
