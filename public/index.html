@@ -9,6 +9,15 @@
     if (window.location.pathname.includes('/client/')) {
       window.location.href = '/';
     }
+    
+    // Redirect to React app after a short delay
+    setTimeout(function() {
+      // Check if still on loading page after 3 seconds
+      if (document.querySelector('.loader')) {
+        // Try to load the app directly
+        window.location.href = '/landing';
+      }
+    }, 3000);
   </script>
   <style>
     body {
@@ -38,12 +47,27 @@
     .container {
       text-align: center;
     }
+    .login-link {
+      margin-top: 20px;
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #FF335F;
+      color: white;
+      text-decoration: none;
+      border-radius: 4px;
+      font-weight: bold;
+    }
+    .message {
+      margin: 10px 0 15px;
+    }
   </style>
 </head>
 <body>
   <div class="container">
     <div class="loader"></div>
-    <p>Loading Urmi.ai...</p>
+    <p class="message">Loading Urmi.ai...</p>
+    <p>If the page doesn't load automatically:</p>
+    <a href="/login" class="login-link">Go to Login</a>
   </div>
 </body>
 </html> 
