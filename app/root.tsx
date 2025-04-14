@@ -20,7 +20,6 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <title>Dashboard</title>
         <Meta />
         <Links />
-        <script src="/netlify-fix.js" type="text/javascript"></script>
       </head>
       <body>
         {children}
