@@ -4,22 +4,12 @@ import {
   ResponsiveContainer 
 } from 'recharts';
 import './Dashboard.css';
-import { Link } from 'react-router-dom';
-import { useAuth } from '../../context/AuthContext';
-import { useNavigate } from 'react-router-dom';
+import DashboardLayout from './DashboardLayout';
 
 const Dashboard = () => {
   const [dateRange] = useState('03/05/2025 - 04/05/2025');
   const [groupedBy] = useState('Day');
   const [assistantFilter] = useState('All Assistants');
-  const [sidebarOpen, setSidebarOpen] = useState(false);
-
-  const { currentUser, logout } = useAuth();
-  const navigate = useNavigate();
-
-  const toggleSidebar = () => {
-    setSidebarOpen(!sidebarOpen);
-  };
 
   // Sample data for charts
   const callMinutesData = [
@@ -138,410 +128,273 @@ const Dashboard = () => {
     { time: '2025-04-02 05:30', calls: 1 },
   ];
 
-  const handleLogout = async () => {
-    try {
-      await logout();
-      navigate('/login');
-    } catch (error) {
-      console.error('Failed to log out', error);
-    }
-  };
-
   return (
-    <div className="dashboard-container">
-      {/* Sidebar */}
-      <aside className={`sidebar ${sidebarOpen ? 'open' : ''}`}>
-        <div className="sidebar-header">
-          <div className="sidebar-logo">
-            <h1>URMI</h1>
-          </div>
-          <button className="sidebar-close" onClick={toggleSidebar}>×</button>
+    <DashboardLayout pageTitle="Overview">
+      <header className="dashboard-header">
+        <div className="title">
+          <h2>Overview</h2>
         </div>
-        
-        <div className="sidebar-section">
-          <h3 className="sidebar-section-title">ORGANIZATION</h3>
-          <div className="sidebar-email">
-            <span>{currentUser?.email || 'mail@gmail.com'}</span>
-            <button 
-              onClick={handleLogout} 
-              style={{ 
-                background: 'transparent', 
-                border: 'none', 
-                cursor: 'pointer', 
-                color: '#FF335F',
-                marginLeft: '5px' 
-              }}
-            >
-              Logout
-            </button>
+        <div className="filters">
+          <div className="date-range">
+            <span>📅 {dateRange}</span>
+          </div>
+          <div className="filter-options">
+            <span>grouped by</span>
+            <div className="dropdown">
+              <span className="selected">{groupedBy}</span>
+              <span className="arrow">▼</span>
+            </div>
+            <span>filtered by</span>
+            <div className="dropdown">
+              <span className="selected">{assistantFilter}</span>
+              <span className="arrow">▼</span>
+            </div>
           </div>
         </div>
-        
-        <nav className="sidebar-nav">
-          <div className="sidebar-section">
-            <Link to="/dashboard" className="sidebar-link active">
-              <span className="sidebar-icon">🏠</span>
-              <span>Overview</span>
-            </Link>
+      </header>
+
+      <div className="stats-grid">
+        <div className="stat-card">
+          <h3>📞 Total Call Minutes</h3>
+          <div className="stat-value">12.91</div>
+          <div className="chart-container">
+            <ResponsiveContainer width="100%" height="100%">
+              <LineChart data={callMinutesData}>
+                <Line type="monotone" dataKey="minutes" stroke="#FF335F" dot={false} />
+                <XAxis dataKey="date" hide={true} />
+                <YAxis hide={true} />
+              </LineChart>
+            </ResponsiveContainer>
           </div>
-          
-          <div className="sidebar-section">
-            <h3 className="sidebar-section-title">BUILD</h3>
-            <a href="#" className="sidebar-link">
-              <span className="sidebar-icon">👤</span>
-              <span>Assistants</span>
-            </a>
-            <a href="#" className="sidebar-link">
-              <span className="sidebar-icon">⚙️</span>
-              <span>Workflows</span>
-            </a>
-            <a href="#" className="sidebar-link">
-              <span className="sidebar-icon">📱</span>
-              <span>Phone Numbers</span>
-            </a>
-            <a href="#" className="sidebar-link">
-              <span className="sidebar-icon">🔧</span>
-              <span>Tools</span>
-            </a>
-            <a href="#" className="sidebar-link">
-              <span className="sidebar-icon">📁</span>
-              <span>Files</span>
-            </a>
-            <a href="#" className="sidebar-link">
-              <span className="sidebar-icon">👥</span>
-              <span>Squads</span>
-            </a>
-            <a href="#" className="sidebar-link">
-              <span className="sidebar-icon">🔑</span>
-              <span>Provider Keys</span>
-            </a>
-          </div>
-          
-          <div className="sidebar-section">
-            <h3 className="sidebar-section-title">TEST</h3>
-          </div>
-          
-          <div className="sidebar-section">
-            <h3 className="sidebar-section-title">OBSERVE</h3>
-            <Link to="/call-logs" className="sidebar-link">
-              <span className="sidebar-icon">📞</span>
-              <span>Call Logs</span>
-            </Link>
-            <a href="#" className="sidebar-link">
-              <span className="sidebar-icon">📊</span>
-              <span>API Logs</span>
-            </a>
-            <a href="#" className="sidebar-link">
-              <span className="sidebar-icon">🔔</span>
-              <span>Webhook Logs</span>
-            </a>
-          </div>
-          
-          <div className="sidebar-section">
-            <h3 className="sidebar-section-title">COMMUNITY</h3>
-          </div>
-          
-          <div className="sidebar-section">
-            <h3 className="sidebar-section-title">ORG SETTINGS</h3>
-          </div>
-          
-          <div className="sidebar-section">
-            <h3 className="sidebar-section-title">ACCOUNT SETTINGS</h3>
-          </div>
-        </nav>
-        
-        <div className="sidebar-footer">
-          <a href="#" className="sidebar-help">
-            <span className="sidebar-icon">❓</span>
-            <span>Help</span>
-          </a>
         </div>
-      </aside>
 
-      {/* Main content */}
-      <main className="main-content">
-        {/* Mobile navbar */}
-        <nav className="mobile-navbar">
-          <button className="menu-toggle" onClick={toggleSidebar}>
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M3 12H21M3 6H21M3 18H21" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
-          </button>
-          
-          <div className="navbar-right">
-            <span className="page-title">Overview</span>
+        <div className="stat-card">
+          <h3>📊 Number of Calls</h3>
+          <div className="stat-value">19</div>
+          <div className="chart-container">
+            <ResponsiveContainer width="100%" height="100%">
+              <LineChart data={numberOfCallsData}>
+                <Line type="monotone" dataKey="calls" stroke="#6366F1" dot={false} />
+                <XAxis dataKey="date" hide={true} />
+                <YAxis hide={true} />
+              </LineChart>
+            </ResponsiveContainer>
           </div>
-        </nav>
+        </div>
 
-        <header className="dashboard-header">
-          <button className="mobile-nav-toggle" onClick={toggleSidebar}>
-            ☰
-          </button>
-          <div className="title">
-            <h2>Overview</h2>
+        <div className="stat-card">
+          <h3>💵 Total Spent</h3>
+          <div className="stat-value">$1.32</div>
+          <div className="chart-container">
+            <ResponsiveContainer width="100%" height="100%">
+              <LineChart data={totalSpentData}>
+                <Line type="monotone" dataKey="amount" stroke="#F97316" dot={false} />
+                <XAxis dataKey="date" hide={true} />
+                <YAxis hide={true} />
+              </LineChart>
+            </ResponsiveContainer>
           </div>
-          <div className="filters">
-            <div className="date-range">
-              <span>📅 {dateRange}</span>
+        </div>
+
+        <div className="stat-card">
+          <h3>⚖️ Average Cost per Call</h3>
+          <div className="stat-value">$0.07</div>
+          <div className="chart-container">
+            <ResponsiveContainer width="100%" height="100%">
+              <LineChart data={averageCostData}>
+                <Line type="monotone" dataKey="cost" stroke="#0EA5E9" dot={false} />
+                <XAxis dataKey="date" hide={true} />
+                <YAxis hide={true} />
+              </LineChart>
+            </ResponsiveContainer>
+          </div>
+        </div>
+      </div>
+
+      <div className="section-title">
+        <h2>Call Analysis</h2>
+      </div>
+
+      <div className="charts-grid">
+        <div className="chart-card">
+          <h3>📋 Reason Call Ended</h3>
+          <div className="chart-container">
+            <ResponsiveContainer width="100%" height="100%">
+              <BarChart data={callEndReasonData}>
+                <CartesianGrid strokeDasharray="3 3" vertical={false} />
+                <XAxis dataKey="name" tick={{ fontSize: 10 }} />
+                <YAxis />
+                <Tooltip />
+                <Bar dataKey="customer-ended-call" stackId="a" fill="#6366F1" />
+                <Bar dataKey="silence-timed-out" stackId="a" fill="#22C55E" />
+                <Bar dataKey="customer-did-not-answer" stackId="a" fill="#EAB308" />
+              </BarChart>
+            </ResponsiveContainer>
+          </div>
+          <div className="legend">
+            <div className="legend-item">
+              <div className="legend-color" style={{ backgroundColor: "#6366F1" }}></div>
+              <span>customer-ended-call</span>
             </div>
-            <div className="filter-options">
-              <span>grouped by</span>
-              <div className="dropdown">
-                <span className="selected">{groupedBy}</span>
-                <span className="arrow">▼</span>
-              </div>
-              <span>filtered by</span>
-              <div className="dropdown">
-                <span className="selected">{assistantFilter}</span>
-                <span className="arrow">▼</span>
-              </div>
+            <div className="legend-item">
+              <div className="legend-color" style={{ backgroundColor: "#22C55E" }}></div>
+              <span>silence-timed-out</span>
             </div>
-          </div>
-        </header>
-
-        <div className="stats-grid">
-          <div className="stat-card">
-            <h3>📞 Total Call Minutes</h3>
-            <div className="stat-value">12.91</div>
-            <div className="chart-container">
-              <ResponsiveContainer width="100%" height="100%">
-                <LineChart data={callMinutesData}>
-                  <Line type="monotone" dataKey="minutes" stroke="#FF335F" dot={false} />
-                  <XAxis dataKey="date" hide={true} />
-                  <YAxis hide={true} />
-                </LineChart>
-              </ResponsiveContainer>
-            </div>
-          </div>
-
-          <div className="stat-card">
-            <h3>📊 Number of Calls</h3>
-            <div className="stat-value">19</div>
-            <div className="chart-container">
-              <ResponsiveContainer width="100%" height="100%">
-                <LineChart data={numberOfCallsData}>
-                  <Line type="monotone" dataKey="calls" stroke="#6366F1" dot={false} />
-                  <XAxis dataKey="date" hide={true} />
-                  <YAxis hide={true} />
-                </LineChart>
-              </ResponsiveContainer>
-            </div>
-          </div>
-
-          <div className="stat-card">
-            <h3>💵 Total Spent</h3>
-            <div className="stat-value">$1.32</div>
-            <div className="chart-container">
-              <ResponsiveContainer width="100%" height="100%">
-                <LineChart data={totalSpentData}>
-                  <Line type="monotone" dataKey="amount" stroke="#F97316" dot={false} />
-                  <XAxis dataKey="date" hide={true} />
-                  <YAxis hide={true} />
-                </LineChart>
-              </ResponsiveContainer>
-            </div>
-          </div>
-
-          <div className="stat-card">
-            <h3>⚖️ Average Cost per Call</h3>
-            <div className="stat-value">$0.07</div>
-            <div className="chart-container">
-              <ResponsiveContainer width="100%" height="100%">
-                <LineChart data={averageCostData}>
-                  <Line type="monotone" dataKey="cost" stroke="#0EA5E9" dot={false} />
-                  <XAxis dataKey="date" hide={true} />
-                  <YAxis hide={true} />
-                </LineChart>
-              </ResponsiveContainer>
+            <div className="legend-item">
+              <div className="legend-color" style={{ backgroundColor: "#EAB308" }}></div>
+              <span>customer-did-not-answer</span>
             </div>
           </div>
         </div>
 
-        <div className="section-title">
-          <h2>Call Analysis</h2>
+        <div className="chart-card">
+          <h3>⏱️ Average Call Duration by Assistant</h3>
+          <div className="chart-container">
+            <ResponsiveContainer width="100%" height="100%">
+              <BarChart data={callDurationData}>
+                <CartesianGrid strokeDasharray="3 3" vertical={false} />
+                <XAxis dataKey="name" tick={{ fontSize: 10 }} />
+                <YAxis />
+                <Tooltip />
+                <Bar dataKey="Mary" fill="#6366F1" />
+                <Bar dataKey="Alex" fill="#22C55E" />
+                <Bar dataKey="Robin" fill="#EAB308" />
+                <Bar dataKey="Unknown Assistant" fill="#F97316" />
+              </BarChart>
+            </ResponsiveContainer>
+          </div>
+          <div className="legend">
+            <div className="legend-item">
+              <div className="legend-color" style={{ backgroundColor: "#6366F1" }}></div>
+              <span>Mary</span>
+            </div>
+            <div className="legend-item">
+              <div className="legend-color" style={{ backgroundColor: "#22C55E" }}></div>
+              <span>Alex</span>
+            </div>
+            <div className="legend-item">
+              <div className="legend-color" style={{ backgroundColor: "#EAB308" }}></div>
+              <span>Robin</span>
+            </div>
+            <div className="legend-item">
+              <div className="legend-color" style={{ backgroundColor: "#F97316" }}></div>
+              <span>Unknown Assistant</span>
+            </div>
+          </div>
         </div>
 
-        <div className="charts-grid">
-          <div className="chart-card">
-            <h3>📋 Reason Call Ended</h3>
-            <div className="chart-container">
-              <ResponsiveContainer width="100%" height="100%">
-                <BarChart data={callEndReasonData}>
-                  <CartesianGrid strokeDasharray="3 3" vertical={false} />
-                  <XAxis dataKey="name" tick={{ fontSize: 10 }} />
-                  <YAxis />
-                  <Tooltip />
-                  <Bar dataKey="customer-ended-call" stackId="a" fill="#6366F1" />
-                  <Bar dataKey="silence-timed-out" stackId="a" fill="#22C55E" />
-                  <Bar dataKey="customer-did-not-answer" stackId="a" fill="#EAB308" />
-                </BarChart>
-              </ResponsiveContainer>
+        <div className="chart-card">
+          <h3>💰 Cost Breakdown</h3>
+          <div className="chart-container">
+            <ResponsiveContainer width="100%" height="100%">
+              <BarChart data={costBreakdownData}>
+                <CartesianGrid strokeDasharray="3 3" vertical={false} />
+                <XAxis dataKey="name" tick={{ fontSize: 10 }} />
+                <YAxis />
+                <Tooltip />
+                <Bar dataKey="LLM" fill="#6366F1" />
+                <Bar dataKey="STT" fill="#22C55E" />
+                <Bar dataKey="TTS" fill="#EAB308" />
+                <Bar dataKey="VAPI" fill="#F97316" />
+              </BarChart>
+            </ResponsiveContainer>
+          </div>
+          <div className="legend">
+            <div className="legend-item">
+              <div className="legend-color" style={{ backgroundColor: "#6366F1" }}></div>
+              <span>LLM</span>
             </div>
-            <div className="legend">
-              <div className="legend-item">
-                <div className="legend-color" style={{ backgroundColor: "#6366F1" }}></div>
-                <span>customer-ended-call</span>
-              </div>
-              <div className="legend-item">
-                <div className="legend-color" style={{ backgroundColor: "#22C55E" }}></div>
-                <span>silence-timed-out</span>
-              </div>
-              <div className="legend-item">
-                <div className="legend-color" style={{ backgroundColor: "#EAB308" }}></div>
-                <span>customer-did-not-answer</span>
-              </div>
+            <div className="legend-item">
+              <div className="legend-color" style={{ backgroundColor: "#22C55E" }}></div>
+              <span>STT</span>
+            </div>
+            <div className="legend-item">
+              <div className="legend-color" style={{ backgroundColor: "#EAB308" }}></div>
+              <span>TTS</span>
+            </div>
+            <div className="legend-item">
+              <div className="legend-color" style={{ backgroundColor: "#F97316" }}></div>
+              <span>VAPI</span>
             </div>
           </div>
+        </div>
 
-          <div className="chart-card">
-            <h3>⏱️ Average Call Duration by Assistant</h3>
-            <div className="chart-container">
-              <ResponsiveContainer width="100%" height="100%">
-                <BarChart data={callDurationData}>
-                  <CartesianGrid strokeDasharray="3 3" vertical={false} />
-                  <XAxis dataKey="name" tick={{ fontSize: 10 }} />
-                  <YAxis />
-                  <Tooltip />
-                  <Bar dataKey="Mary" fill="#6366F1" />
-                  <Bar dataKey="Alex" fill="#22C55E" />
-                  <Bar dataKey="Robin" fill="#EAB308" />
-                  <Bar dataKey="Unknown Assistant" fill="#F97316" />
-                </BarChart>
-              </ResponsiveContainer>
+        <div className="chart-card">
+          <h3>✅ Success Evaluation</h3>
+          <div className="chart-container">
+            <ResponsiveContainer width="100%" height="100%">
+              <BarChart data={successEvaluationData}>
+                <CartesianGrid strokeDasharray="3 3" vertical={false} />
+                <XAxis dataKey="name" tick={{ fontSize: 10 }} />
+                <YAxis />
+                <Tooltip />
+                <Bar dataKey="true" stackId="a" fill="#22C55E" />
+                <Bar dataKey="unknown" stackId="a" fill="#6366F1" />
+                <Bar dataKey="false" stackId="a" fill="#EF4444" />
+              </BarChart>
+            </ResponsiveContainer>
+          </div>
+          <div className="legend">
+            <div className="legend-item">
+              <div className="legend-color" style={{ backgroundColor: "#22C55E" }}></div>
+              <span>true</span>
             </div>
-            <div className="legend">
-              <div className="legend-item">
-                <div className="legend-color" style={{ backgroundColor: "#6366F1" }}></div>
-                <span>Mary</span>
-              </div>
-              <div className="legend-item">
-                <div className="legend-color" style={{ backgroundColor: "#22C55E" }}></div>
-                <span>Alex</span>
-              </div>
-              <div className="legend-item">
-                <div className="legend-color" style={{ backgroundColor: "#EAB308" }}></div>
-                <span>Robin</span>
-              </div>
-              <div className="legend-item">
-                <div className="legend-color" style={{ backgroundColor: "#F97316" }}></div>
-                <span>Unknown Assistant</span>
-              </div>
+            <div className="legend-item">
+              <div className="legend-color" style={{ backgroundColor: "#6366F1" }}></div>
+              <span>Unknown</span>
+            </div>
+            <div className="legend-item">
+              <div className="legend-color" style={{ backgroundColor: "#EF4444" }}></div>
+              <span>false</span>
             </div>
           </div>
+        </div>
 
-          <div className="chart-card">
-            <h3>💰 Cost Breakdown</h3>
-            <div className="chart-container">
-              <ResponsiveContainer width="100%" height="100%">
-                <BarChart data={costBreakdownData}>
-                  <CartesianGrid strokeDasharray="3 3" vertical={false} />
-                  <XAxis dataKey="name" tick={{ fontSize: 10 }} />
-                  <YAxis />
-                  <Tooltip />
-                  <Bar dataKey="LLM" fill="#6366F1" />
-                  <Bar dataKey="STT" fill="#22C55E" />
-                  <Bar dataKey="TTS" fill="#EAB308" />
-                  <Bar dataKey="VAPI" fill="#F97316" />
-                </BarChart>
-              </ResponsiveContainer>
-            </div>
-            <div className="legend">
-              <div className="legend-item">
-                <div className="legend-color" style={{ backgroundColor: "#6366F1" }}></div>
-                <span>LLM</span>
-              </div>
-              <div className="legend-item">
-                <div className="legend-color" style={{ backgroundColor: "#22C55E" }}></div>
-                <span>STT</span>
-              </div>
-              <div className="legend-item">
-                <div className="legend-color" style={{ backgroundColor: "#EAB308" }}></div>
-                <span>TTS</span>
-              </div>
-              <div className="legend-item">
-                <div className="legend-color" style={{ backgroundColor: "#F97316" }}></div>
-                <span>VAPI</span>
-              </div>
-            </div>
-          </div>
-
-          <div className="chart-card">
-            <h3>✅ Success Evaluation</h3>
-            <div className="chart-container">
-              <ResponsiveContainer width="100%" height="100%">
-                <BarChart data={successEvaluationData}>
-                  <CartesianGrid strokeDasharray="3 3" vertical={false} />
-                  <XAxis dataKey="name" tick={{ fontSize: 10 }} />
-                  <YAxis />
-                  <Tooltip />
-                  <Bar dataKey="true" stackId="a" fill="#22C55E" />
-                  <Bar dataKey="unknown" stackId="a" fill="#6366F1" />
-                  <Bar dataKey="false" stackId="a" fill="#EF4444" />
-                </BarChart>
-              </ResponsiveContainer>
-            </div>
-            <div className="legend">
-              <div className="legend-item">
-                <div className="legend-color" style={{ backgroundColor: "#22C55E" }}></div>
-                <span>true</span>
-              </div>
-              <div className="legend-item">
-                <div className="legend-color" style={{ backgroundColor: "#6366F1" }}></div>
-                <span>Unknown</span>
-              </div>
-              <div className="legend-item">
-                <div className="legend-color" style={{ backgroundColor: "#EF4444" }}></div>
-                <span>false</span>
-              </div>
-            </div>
-          </div>
-
-          <div className="chart-card unsuccessful-calls">
-            <h3>❌ Unsuccessful calls</h3>
-            <div className="calls-list">
-              {unsuccessfulCalls.map((call) => (
-                <div className="call-item" key={call.id}>
-                  <div className="call-details">
-                    <div className="assistant-name">{call.assistant}</div>
-                    <div className="call-info">{call.date} • {call.phone}</div>
-                  </div>
-                  <div className="call-status failed">{call.status}</div>
+        <div className="chart-card unsuccessful-calls">
+          <h3>❌ Unsuccessful calls</h3>
+          <div className="calls-list">
+            {unsuccessfulCalls.map((call) => (
+              <div className="call-item" key={call.id}>
+                <div className="call-details">
+                  <div className="assistant-name">{call.assistant}</div>
+                  <div className="call-info">{call.date} • {call.phone}</div>
                 </div>
-              ))}
-            </div>
-            <div className="view-more">
-              <button>View More</button>
-            </div>
-          </div>
-
-          <div className="chart-card">
-            <div className="card-header">
-              <h3>🔄 Number of Concurrent Calls</h3>
-              <div className="dropdown">
-                <button className="dropdown-btn">Day</button>
+                <div className="call-status failed">{call.status}</div>
               </div>
-            </div>
-            <div className="chart-container">
-              <ResponsiveContainer width="100%" height="100%">
-                <LineChart data={concurrentCallsData}>
-                  <CartesianGrid strokeDasharray="3 3" vertical={false} />
-                  <XAxis dataKey="time" tick={{ fontSize: 10 }} />
-                  <YAxis />
-                  <Tooltip />
-                  <Line type="monotone" dataKey="calls" stroke="#0EA5E9" strokeWidth={2} dot={false} />
-                </LineChart>
-              </ResponsiveContainer>
-            </div>
+            ))}
+          </div>
+          <div className="view-more">
+            <button>View More</button>
           </div>
         </div>
 
-        <div className="ask-ai">
-          <button className="ask-ai-btn">
-            🤖 Ask AI
-          </button>
+        <div className="chart-card">
+          <div className="card-header">
+            <h3>🔄 Number of Concurrent Calls</h3>
+            <div className="dropdown">
+              <button className="dropdown-btn">Day</button>
+            </div>
+          </div>
+          <div className="chart-container">
+            <ResponsiveContainer width="100%" height="100%">
+              <LineChart data={concurrentCallsData}>
+                <CartesianGrid strokeDasharray="3 3" vertical={false} />
+                <XAxis dataKey="time" tick={{ fontSize: 10 }} />
+                <YAxis />
+                <Tooltip />
+                <Line type="monotone" dataKey="calls" stroke="#0EA5E9" strokeWidth={2} dot={false} />
+              </LineChart>
+            </ResponsiveContainer>
+          </div>
         </div>
-      </main>
-    </div>
+      </div>
+
+      <div className="ask-ai">
+        <button className="ask-ai-btn">
+          🤖 Ask AI
+        </button>
+      </div>
+    </DashboardLayout>
   );
 };
 

@@ -1,0 +1,186 @@
+import React, { useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
+import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
+import './landing.css';
+
+export default function LandingPage() {
+  const heroRef = useRef<HTMLDivElement>(null);
+  
+  // Use framer-motion's useScroll hook instead of manual scroll handling
+  const { scrollY } = useScroll();
+  
+  // Create motion values that transform based on scroll position
+  // Enhanced 3D movement for text going up with more dramatic parallax
+  const logoY = useTransform(scrollY, [0, 250, 500], [0, -180, -220]);
+  const logoZ = useTransform(scrollY, [0, 250, 500], [0, 200, 300]);
+  // Enhanced scaling and perspective for more dramatic 3D effect
+  const logoScale = useTransform(scrollY, [0, 250, 500], [1, 1.25, 1.3]);
+  const logoOpacity = useTransform(scrollY, [0, 250, 500], [1, 0.9, 0.85]);
+  // More dramatic letter spacing for enhanced 3D look
+  const logoSpacing = useTransform(scrollY, [0, 250, 500], [0, 12, 16]);
+  
+  // Modified video transform with stop point
+  // Video will move down until 200px scroll, then stop at 120px position
+  const videoY = useTransform(
+    scrollY, 
+    [0, 100, 400, 600], 
+    [0, 300, 300, 300]
+  );
+  
+  // Create smoother animation for video position
+  const smoothVideoY = useSpring(videoY, {
+    stiffness: 120,
+    damping: 25,
+    restDelta: 0.001
+  });
+  
+  // Adjust z-index and scale to complement the stopped y motion
+  const videoZ = useTransform(scrollY, [0, 100, 600], [0, 200, 200]);
+  const videoScale = useTransform(scrollY, [0, 100, 600], [1, 1.2, 1.2]);
+  const videoBlur = useTransform(scrollY, [0, 100, 600], [0, 1.2, 1.2]);
+  
+  // Enhanced tagline movement for more dramatic parallax effect
+  const taglineY = useTransform(scrollY, [0, 250, 500], [0, -200, -250]);
+  const taglineZ = useTransform(scrollY, [0, 250, 500], [0, 120, 180]);
+  // More dramatic scale for enhanced 3D appearance
+  const taglineScale = useTransform(scrollY, [0, 250, 500], [1, 1.15, 1.2]);
+  const taglineOpacity = useTransform(scrollY, [0, 500], [1, 0.8]);
+  const taglineSpacing = useTransform(scrollY, [0, 250, 500], [0, 5, 7]);
+  
+  // Enhanced vertical text movement
+  const verticalTextY = useTransform(scrollY, [0, 250, 500], [0, -30, -45]);
+  const verticalTextX = useTransform(scrollY, [0, 250, 500], [0, 25, 35]);
+  const verticalTextOpacity = useTransform(scrollY, [0, 500], [1, 0.7]);
+  const verticalTextRotate = useTransform(scrollY, [0, 500], [180, 175]);
+  
+  // Enhanced 3D rotation for more dramatic effect
+  const heroRotateX = useTransform(scrollY, [0, 250, 500], [0, 10, 12]);
+  // Adding perspective distance for deeper 3D effect
+  const heroPerspective = useTransform(scrollY, [0, 500], [1000, 600]);
+
+  return (
+    <div className="landing-container">
+      {/* Navbar */}
+      <nav className="landing-navbar">
+        {/* Logo */}
+        <div className="landing-nav-logo">
+          URMI.AI
+        </div>
+        
+        {/* Navigation Links */}
+        <div className="landing-nav-links">
+          <Link to="/" className="landing-nav-link active">Overview</Link>
+          <Link to="/document" className="landing-nav-link">Document</Link>
+          <Link to="/messages" className="landing-nav-link">Messages</Link>
+          <Link to="/labs" className="landing-nav-link">Labs</Link>
+        </div>
+        
+        {/* Login Button & Avatar */}
+        <div className="landing-nav-right">
+          <Link to="/login" className="landing-nav-button login-button">
+            Login
+          </Link>
+          <div className="avatar"></div>
+        </div>
+      </nav>
+      
+      {/* Hero Section */}
+      <motion.div 
+        className="hero-section" 
+        ref={heroRef}
+        style={{ 
+          rotateX: heroRotateX,
+          perspective: heroPerspective
+        }}
+      >
+        <div className="hero-content">
+          <motion.h1 
+            className="hero-logo" 
+            style={{ 
+              y: logoY,
+              z: logoZ,
+              scale: logoScale,
+              opacity: logoOpacity,
+              letterSpacing: logoSpacing,
+              textShadow: useTransform(
+                scrollY,
+                [0, 500],
+                ['0px 0px 0px rgba(255, 64, 124, 0.3)', '2px 4px 8px rgba(255, 64, 124, 0.5)']
+              )
+            }}
+          >
+            URMI.AI
+          </motion.h1>
+          
+          <motion.p 
+            className="hero-tagline" 
+            style={{ 
+              y: taglineY,
+              z: taglineZ,
+              scale: taglineScale,
+              opacity: taglineOpacity,
+              letterSpacing: taglineSpacing
+            }}
+          >
+            Revolutionizing AI-Powered Voice Interactions
+          </motion.p>
+        </div>
+        
+        <div className="video-container">
+          <motion.div 
+            className="video-circle"
+            style={{ 
+              y: smoothVideoY,
+              z: videoZ,
+              scale: videoScale,
+              filter: useTransform(videoBlur, (value) => `blur(${value}px)`),
+              boxShadow: useTransform(
+                scrollY,
+                [0, 500],
+                ['0 10px 30px rgba(0, 0, 0, 0.5)', '0 20px 50px rgba(0, 0, 0, 0.7)']
+              )
+            }}
+          >
+            <video 
+              autoPlay 
+              loop 
+              muted 
+              playsInline
+              src="/assets/video.mp4"
+            >
+              Your browser does not support the video tag.
+            </video>
+          </motion.div>
+        </div>
+        
+        <motion.div 
+          className="vertical-text"
+          style={{ 
+            y: verticalTextY,
+            x: verticalTextX,
+            opacity: verticalTextOpacity,
+            textShadow: useTransform(
+              scrollY,
+              [0, 500],
+              ['none', '1px 1px 3px rgba(255, 255, 255, 0.2)']
+            )
+          }}
+        >
+          <motion.p style={{ transform: `rotate(${verticalTextRotate}deg)` }}>
+            Your On-the-go AI Assistant
+          </motion.p>
+        </motion.div>
+
+      </motion.div>
+      
+      {/* Content sections will go here */}
+      <div className="landing-content">
+        <div className="spacer"></div>
+        <section className="feature-section">
+          <h2>Your On-the-go AI Assistant</h2>
+          <p>Experience the future of voice-powered AI technology</p>
+        </section>
+      </div>
+    </div>
+  );
+} 
