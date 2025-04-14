@@ -22,8 +22,17 @@ if (!fs.existsSync(clientDir)) {
   fs.mkdirSync(clientDir, { recursive: true });
 }
 
-// Create _redirects file for SPA routing
-const redirectsContent = '/* /index.html 200';
+// Create _redirects file for SPA routing with specific route handling
+const redirectsContent = `
+# Handle direct access to the login page
+/login    /index.html    200
+/register    /index.html    200
+/forgot-password    /index.html    200
+
+# Handle all other routes with client-side routing
+/*    /index.html    200
+`;
+
 const redirectsPath = path.join(clientDir, '_redirects');
 fs.writeFileSync(redirectsPath, redirectsContent);
 console.log('✅ Created _redirects file in client build directory');
@@ -35,10 +44,21 @@ const netlifyTomlContent = `
   publish = "."
 
 [[redirects]]
+  from = "/login"
+  to = "/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
   force = true
+
+[[headers]]
+  for = "/*"
+    [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
 `;
 
 fs.writeFileSync(netlifyTomlPath, netlifyTomlContent);

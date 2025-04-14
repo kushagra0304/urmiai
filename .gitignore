@@ -8,3 +8,6 @@
 # Vercel
 .vercel
 .env.local
+
+# Local Netlify folder
+.netlify

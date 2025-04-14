@@ -16,6 +16,7 @@ import { auth, googleProvider, githubProvider, twitterProvider } from '../config
 type AuthContextType = {
   currentUser: User | null;
   loading: boolean;
+  authError: string | null;
   signUp: (email: string, password: string) => Promise<any>;
   login: (email: string, password: string) => Promise<any>;
   logout: () => Promise<void>;
@@ -40,14 +41,39 @@ export const useAuth = () => {
 export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [currentUser, setCurrentUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
+  const [authError, setAuthError] = useState<string | null>(null);
   const [confirmationResult, setConfirmationResult] = useState<any>(null);
+  const [authInitialized, setAuthInitialized] = useState(false);
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      setCurrentUser(user);
-      setLoading(false);
-    });
-    return unsubscribe;
+    // Set a timeout to ensure loading state doesn't get stuck
+    const timeoutId = setTimeout(() => {
+      if (loading && !authInitialized) {
+        console.log('Auth initialization timeout - forcing loading to false');
+        setLoading(false);
+      }
+    }, 5000); // 5 second timeout
+
+    const unsubscribe = onAuthStateChanged(auth, 
+      (user) => {
+        console.log('Auth state changed:', user ? 'User logged in' : 'No user');
+        setCurrentUser(user);
+        setLoading(false);
+        setAuthInitialized(true);
+      },
+      (error) => {
+        console.error('Auth state change error:', error);
+        setAuthError(error.message);
+        setLoading(false);
+        setAuthInitialized(true);
+      }
+    );
+
+    // Clean up the timeout and auth listener
+    return () => {
+      clearTimeout(timeoutId);
+      unsubscribe();
+    };
   }, []);
 
   // Email/Password Authentication
@@ -82,23 +108,26 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   // Phone Authentication
   const setupRecaptcha = async (phoneNumber: string) => {
-    const recaptchaVerifier = new RecaptchaVerifier(auth, 'recaptcha-container', {
-      'size': 'invisible'
-    });
-    
     try {
+      const recaptchaVerifier = new RecaptchaVerifier(auth, 'recaptcha-container', {
+        'size': 'invisible'
+      });
+      
       const confirmationResult = await signInWithPhoneNumber(auth, phoneNumber, recaptchaVerifier);
       setConfirmationResult(confirmationResult);
       return confirmationResult;
-    } catch (error) {
+    } catch (error: any) {
       console.error('Error during phone authentication setup:', error);
+      setAuthError(error.message);
       throw error;
     }
   };
 
   const verifyOtp = async (otp: string) => {
     if (!confirmationResult) {
-      throw new Error('No confirmation result available');
+      const error = 'No confirmation result available';
+      setAuthError(error);
+      throw new Error(error);
     }
     return confirmationResult.confirm(otp);
   };
@@ -106,6 +135,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const value = {
     currentUser,
     loading,
+    authError,
     signUp,
     login,
     logout,
@@ -119,7 +149,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   return (
     <AuthContext.Provider value={value}>
-      {!loading && children}
+      {children}
     </AuthContext.Provider>
   );
 }; 
