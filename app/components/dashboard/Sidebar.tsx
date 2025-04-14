@@ -30,7 +30,7 @@ const Sidebar = ({ sidebarOpen, toggleSidebar }: SidebarProps) => {
     <aside className={`sidebar ${sidebarOpen ? 'open' : ''}`}>
       <div className="sidebar-header">
         <div className="sidebar-logo">
-          <h1>URMI</h1>
+          URMI.AI
         </div>
         <button className="sidebar-close" onClick={toggleSidebar}>×</button>
       </div>

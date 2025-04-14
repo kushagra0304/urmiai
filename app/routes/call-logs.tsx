@@ -284,9 +284,9 @@ export default function CallLogs() {
                     </svg>
                   </span>
                   Audio
-                </div>
-              </div>
-            </div>
+        </div>
+          </div>
+        </div>
           </div>
           
           {/* Call Tabs */}
@@ -409,9 +409,9 @@ export default function CallLogs() {
                     <button className="copy-id-btn">
                       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M8 3H5C3.89543 3 3 3.89543 3 5V8M8 3H19C20.1046 3 21 3.89543 21 5V19C21 20.1046 20.1046 21 19 21H5C3.89543 21 3 20.1046 3 19V8M8 3V8H3" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                      </svg>
+            </svg>
                       Copy
-                    </button>
+          </button>
                   </div>
                 </div>
                 <div className="detail-item">
@@ -483,96 +483,96 @@ export default function CallLogs() {
 
   const CallLogsContent = () => (
     <DashboardLayout pageTitle="Call Logs">
-      <div className="call-logs-page">
-        <div className="breadcrumb">
-          <span className="breadcrumb-item">Call Logs</span>
-        </div>
-
-        <div className="logs-content">
-          <h2 className="logs-title">Logs</h2>
-          
-          <div className="stats-cards">
-            <div className="stat-card">
-              <div className="stat-name">All</div>
-              <div className="stat-value">{stats.all}</div>
-            </div>
-            <div className="stat-card">
-              <div className="stat-name">Transferred</div>
-              <div className="stat-value">{stats.transferred}</div>
-            </div>
-            <div className="stat-card">
-              <div className="stat-name">Successful</div>
-              <div className="stat-value">{stats.successful}</div>
-            </div>
-            <div className="stat-card">
-              <div className="stat-name">Failed</div>
-              <div className="stat-value">{stats.failed}</div>
-            </div>
+        <div className="call-logs-page">
+          <div className="breadcrumb">
+            <span className="breadcrumb-item">Call Logs</span>
           </div>
-          
-          <div className="filter-row">
-            <div className="filter-pills">
-              <div className={`filter-pill ${selectedFilters.date ? 'active' : ''}`}>
-                <span className="pill-icon">○</span>
-                <span>Date and Time</span>
+
+          <div className="logs-content">
+            <h2 className="logs-title">Logs</h2>
+            
+            <div className="stats-cards">
+              <div className="stat-card">
+                <div className="stat-name">All</div>
+                <div className="stat-value">{stats.all}</div>
               </div>
-              <div className={`filter-pill ${selectedFilters.cost ? 'active' : ''}`}>
-                <span className="pill-icon">○</span>
-                <span>Cost</span>
+              <div className="stat-card">
+                <div className="stat-name">Transferred</div>
+                <div className="stat-value">{stats.transferred}</div>
               </div>
-              <div className={`filter-pill ${selectedFilters.callType ? 'active' : ''}`}>
-                <span className="pill-icon">○</span>
-                <span>Call Type</span>
+              <div className="stat-card">
+                <div className="stat-name">Successful</div>
+                <div className="stat-value">{stats.successful}</div>
               </div>
-              <div className={`filter-pill ${selectedFilters.assistant ? 'active' : ''}`}>
-                <span className="pill-icon">○</span>
-                <span>Assistant</span>
-              </div>
-              <div className={`filter-pill ${selectedFilters.callId ? 'active' : ''}`}>
-                <span className="pill-icon">○</span>
-                <span>Call ID</span>
-              </div>
-              <div className={`filter-pill ${selectedFilters.successEvaluation ? 'active' : ''}`}>
-                <span className="pill-icon">○</span>
-                <span>Success Evaluation</span>
-              </div>
-              <div className={`filter-pill ${selectedFilters.endedReason ? 'active' : ''}`}>
-                <span className="pill-icon">○</span>
-                <span>Ended Reason</span>
+              <div className="stat-card">
+                <div className="stat-name">Failed</div>
+                <div className="stat-value">{stats.failed}</div>
               </div>
             </div>
             
-            <div className="export-button">
-              <span>Export to CSV</span>
-              <span className="export-icon">⬇</span>
+            <div className="filter-row">
+              <div className="filter-pills">
+                <div className={`filter-pill ${selectedFilters.date ? 'active' : ''}`}>
+                  <span className="pill-icon">○</span>
+                  <span>Date and Time</span>
+                </div>
+                <div className={`filter-pill ${selectedFilters.cost ? 'active' : ''}`}>
+                  <span className="pill-icon">○</span>
+                  <span>Cost</span>
+                </div>
+                <div className={`filter-pill ${selectedFilters.callType ? 'active' : ''}`}>
+                  <span className="pill-icon">○</span>
+                  <span>Call Type</span>
+                </div>
+                <div className={`filter-pill ${selectedFilters.assistant ? 'active' : ''}`}>
+                  <span className="pill-icon">○</span>
+                  <span>Assistant</span>
+                </div>
+                <div className={`filter-pill ${selectedFilters.callId ? 'active' : ''}`}>
+                  <span className="pill-icon">○</span>
+                  <span>Call ID</span>
+                </div>
+                <div className={`filter-pill ${selectedFilters.successEvaluation ? 'active' : ''}`}>
+                  <span className="pill-icon">○</span>
+                  <span>Success Evaluation</span>
+                </div>
+                <div className={`filter-pill ${selectedFilters.endedReason ? 'active' : ''}`}>
+                  <span className="pill-icon">○</span>
+                  <span>Ended Reason</span>
+                </div>
+              </div>
+              
+              <div className="export-button">
+                <span>Export to CSV</span>
+                <span className="export-icon">⬇</span>
+              </div>
             </div>
-          </div>
-          
-          <div className="logs-table-wrapper">
-            <table className="logs-table">
-              <thead>
-                <tr>
-                  <th className="checkbox-col">
-                    <input type="checkbox" />
-                  </th>
-                  <th>Call ID</th>
-                  <th>Assistant</th>
-                  <th>Assistant Phone Number</th>
-                  <th>Customer Phone Number</th>
-                  <th>Ended Reason</th>
-                  <th>Success Evaluation</th>
-                  <th>
-                    <div className="sortable">
-                      Start Time
-                      <span className="sort-icon">▼</span>
-                    </div>
-                  </th>
-                  <th>Duration</th>
-                  <th>Cost</th>
-                </tr>
-              </thead>
-              <tbody>
-                {logs.map((log) => (
+            
+            <div className="logs-table-wrapper">
+              <table className="logs-table">
+                <thead>
+                  <tr>
+                    <th className="checkbox-col">
+                      <input type="checkbox" />
+                    </th>
+                    <th>Call ID</th>
+                    <th>Assistant</th>
+                    <th>Assistant Phone Number</th>
+                    <th>Customer Phone Number</th>
+                    <th>Ended Reason</th>
+                    <th>Success Evaluation</th>
+                    <th>
+                      <div className="sortable">
+                        Start Time
+                        <span className="sort-icon">▼</span>
+                      </div>
+                    </th>
+                    <th>Duration</th>
+                    <th>Cost</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {logs.map((log) => (
                   <tr 
                     key={log.id} 
                     className="log-item" 
@@ -580,100 +580,100 @@ export default function CallLogs() {
                     style={{ cursor: 'pointer' }}
                   >
                     <td onClick={(e) => e.stopPropagation()}>
-                      <input type="checkbox" />
-                    </td>
-                    <td>
-                      <div className="id-cell">
-                        <span className="id-text">{log.id}</span>
-                        <button className="copy-btn">
-                          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M8 3H5C3.89543 3 3 3.89543 3 5V8M8 3H19C20.1046 3 21 3.89543 21 5V19C21 20.1046 20.1046 21 19 21H5C3.89543 21 3 20.1046 3 19V8M8 3V8H3" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                          </svg>
-                        </button>
-                      </div>
-                    </td>
-                    <td>
-                      {log.assistant === "Mary" ? (
-                        <div className="assistant-cell">
-                          <div className="assistant-name">{log.assistant}</div>
-                          <div className="assistant-id">g9f983ec-c6db-4645-b...</div>
+                        <input type="checkbox" />
+                      </td>
+                      <td>
+                        <div className="id-cell">
+                          <span className="id-text">{log.id}</span>
+                          <button className="copy-btn">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M8 3H5C3.89543 3 3 3.89543 3 5V8M8 3H19C20.1046 3 21 3.89543 21 5V19C21 20.1046 20.1046 21 19 21H5C3.89543 21 3 20.1046 3 19V8M8 3V8H3" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                            </svg>
+                          </button>
                         </div>
-                      ) : (
-                        log.assistant
-                      )}
-                    </td>
-                    <td>
-                      {log.assistantPhoneNumber !== "N/A" ? (
-                        <div className="phone-cell">
-                          <div className="phone-number">{log.assistantPhoneNumber}</div>
-                          <div className="phone-type">Inbound paid</div>
-                        </div>
-                      ) : (
-                        <span className="na-text">N/A</span>
-                      )}
-                    </td>
-                    <td>
-                      {log.customerPhoneNumber !== "N/A" ? (
-                        <div className="customer-phone-wrapper">
-                          <div className="customer-phone-badge">
-                            <span className="channel-icon">
-                              {log.customerPhoneType === "Web" ? (
+                      </td>
+                      <td>
+                        {log.assistant === "Mary" ? (
+                          <div className="assistant-cell">
+                            <div className="assistant-name">{log.assistant}</div>
+                            <div className="assistant-id">g9f983ec-c6db-4645-b...</div>
+                          </div>
+                        ) : (
+                          log.assistant
+                        )}
+                      </td>
+                      <td>
+                        {log.assistantPhoneNumber !== "N/A" ? (
+                          <div className="phone-cell">
+                            <div className="phone-number">{log.assistantPhoneNumber}</div>
+                            <div className="phone-type">Inbound paid</div>
+                          </div>
+                        ) : (
+                          <span className="na-text">N/A</span>
+                        )}
+                      </td>
+                      <td>
+                        {log.customerPhoneNumber !== "N/A" ? (
+                          <div className="customer-phone-wrapper">
+                            <div className="customer-phone-badge">
+                              <span className="channel-icon">
+                                {log.customerPhoneType === "Web" ? (
+                                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM12 20C7.59 20 4 16.41 4 12C4 7.59 7.59 4 12 4C16.41 4 20 7.59 20 12C20 16.41 16.41 20 12 20ZM11 7H13V9H11V7ZM11 11H13V17H11V11Z" fill="currentColor"/>
+                                  </svg>
+                                ) : (
+                                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M20 4L4 20M8 4C8 6.20914 9.79086 8 12 8C14.2091 8 16 6.20914 16 4M4 8C6.20914 8 8 9.79086 8 12C8 14.2091 6.20914 16 4 16M16 12C16 9.79086 17.7909 8 20 8C22.2091 8 24 9.79086 24 12C24 14.2091 22.2091 16 20 16M8 20C8 17.7909 9.79086 16 12 16C14.2091 16 16 17.7909 16 20" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                                  </svg>
+                                )}
+                              </span>
+                              <span className="channel-text">{log.customerPhoneType}</span>
+                            </div>
+                            {log.customerPhoneNumber !== "N/A" && log.customerPhoneType === "Outbound" && (
+                              <div className="phone-number">{log.customerPhoneNumber}</div>
+                            )}
+                          </div>
+                        ) : (
+                          <div className="customer-phone-wrapper">
+                            <div className="customer-phone-badge">
+                              <span className="channel-icon">
                                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                   <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM12 20C7.59 20 4 16.41 4 12C4 7.59 7.59 4 12 4C16.41 4 20 7.59 20 12C20 16.41 16.41 20 12 20ZM11 7H13V9H11V7ZM11 11H13V17H11V11Z" fill="currentColor"/>
                                 </svg>
-                              ) : (
-                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                  <path d="M20 4L4 20M8 4C8 6.20914 9.79086 8 12 8C14.2091 8 16 6.20914 16 4M4 8C6.20914 8 8 9.79086 8 12C8 14.2091 6.20914 16 4 16M16 12C16 9.79086 17.7909 8 20 8C22.2091 8 24 9.79086 24 12C24 14.2091 22.2091 16 20 16M8 20C8 17.7909 9.79086 16 12 16C14.2091 16 16 17.7909 16 20" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                                </svg>
-                              )}
-                            </span>
-                            <span className="channel-text">{log.customerPhoneType}</span>
+                              </span>
+                              <span className="channel-text">Web</span>
+                            </div>
                           </div>
-                          {log.customerPhoneNumber !== "N/A" && log.customerPhoneType === "Outbound" && (
-                            <div className="phone-number">{log.customerPhoneNumber}</div>
-                          )}
-                        </div>
-                      ) : (
-                        <div className="customer-phone-wrapper">
-                          <div className="customer-phone-badge">
-                            <span className="channel-icon">
-                              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM12 20C7.59 20 4 16.41 4 12C4 7.59 7.59 4 12 4C16.41 4 20 7.59 20 12C20 16.41 16.41 20 12 20ZM11 7H13V9H11V7ZM11 11H13V17H11V11Z" fill="currentColor"/>
-                              </svg>
-                            </span>
-                            <span className="channel-text">Web</span>
-                          </div>
-                        </div>
-                      )}
-                    </td>
-                    <td>
-                      <span className="ended-reason">{log.endedReason}</span>
-                    </td>
-                    <td>
-                      {log.successEvaluation === "Fail" ? (
-                        <span className="eval-badge fail">Fail</span>
-                      ) : log.successEvaluation === "Pass" ? (
-                        <span className="eval-badge pass">Pass</span>
-                      ) : (
-                        <span className="na-text">N/A</span>
-                      )}
-                    </td>
-                    <td>{log.startTime}</td>
-                    <td>{log.duration}</td>
-                    <td>{log.cost}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+                        )}
+                      </td>
+                      <td>
+                        <span className="ended-reason">{log.endedReason}</span>
+                      </td>
+                      <td>
+                        {log.successEvaluation === "Fail" ? (
+                          <span className="eval-badge fail">Fail</span>
+                        ) : log.successEvaluation === "Pass" ? (
+                          <span className="eval-badge pass">Pass</span>
+                        ) : (
+                          <span className="na-text">N/A</span>
+                        )}
+                      </td>
+                      <td>{log.startTime}</td>
+                      <td>{log.duration}</td>
+                      <td>{log.cost}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div className="ask-ai">
-        <button className="ask-ai-btn">
-          Ask AI <span className="avatar">V</span>
-        </button>
-      </div>
+        <div className="ask-ai">
+          <button className="ask-ai-btn">
+            Ask AI <span className="avatar">V</span>
+          </button>
+        </div>
 
       {/* Call Logs Modal */}
       <CallLogsModal />
