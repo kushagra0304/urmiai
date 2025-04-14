@@ -179,7 +179,7 @@ const Dashboard = () => {
         
         <nav className="sidebar-nav">
           <div className="sidebar-section">
-            <Link to="/" className="sidebar-link active">
+            <Link to="/dashboard" className="sidebar-link active">
               <span className="sidebar-icon">🏠</span>
               <span>Overview</span>
             </Link>

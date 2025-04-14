@@ -22,12 +22,19 @@ export default function LoginRoute() {
   const [loading, setLoading] = useState(false);
   const [rememberMe, setRememberMe] = useState(false);
   
-  const { login, googleSignIn, githubSignIn, twitterSignIn } = useAuth();
+  const { login, googleSignIn, githubSignIn, twitterSignIn, currentUser } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
   
-  // Get redirect path from location state or default to home
-  const from = location.state?.from?.pathname || '/';
+  // Get redirect path from location state or default to dashboard
+  const from = location.state?.from?.pathname || '/dashboard';
+  
+  // Redirect to dashboard if already logged in
+  useEffect(() => {
+    if (currentUser) {
+      navigate('/dashboard', { replace: true });
+    }
+  }, [currentUser, navigate]);
   
   useEffect(() => {
     // Check if coming from registration or password reset
