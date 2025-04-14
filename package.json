@@ -3,7 +3,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "react-router build && cp public/_redirects build/client/",
+    "build": "react-router build && cp public/_redirects build/client/ && cp public/netlify-fix.js build/client/",
     "dev": "react-router dev",
     "start": "npx serve -s build/client",
     "typecheck": "react-router typegen && tsc"
