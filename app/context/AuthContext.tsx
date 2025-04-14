@@ -7,7 +7,6 @@ import {
   onAuthStateChanged,
   sendPasswordResetEmail,
   signInWithPopup,
-  PhoneAuthProvider,
   RecaptchaVerifier,
   signInWithPhoneNumber
 } from 'firebase/auth';
@@ -43,29 +42,25 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const [loading, setLoading] = useState(true);
   const [authError, setAuthError] = useState<string | null>(null);
   const [confirmationResult, setConfirmationResult] = useState<any>(null);
-  const [authInitialized, setAuthInitialized] = useState(false);
 
   useEffect(() => {
     // Set a timeout to ensure loading state doesn't get stuck
     const timeoutId = setTimeout(() => {
-      if (loading && !authInitialized) {
+      if (loading) {
         console.log('Auth initialization timeout - forcing loading to false');
         setLoading(false);
       }
-    }, 5000); // 5 second timeout
+    }, 3000); // 3 second timeout
 
     const unsubscribe = onAuthStateChanged(auth, 
       (user) => {
-        console.log('Auth state changed:', user ? 'User logged in' : 'No user');
         setCurrentUser(user);
         setLoading(false);
-        setAuthInitialized(true);
       },
       (error) => {
         console.error('Auth state change error:', error);
         setAuthError(error.message);
         setLoading(false);
-        setAuthInitialized(true);
       }
     );
 

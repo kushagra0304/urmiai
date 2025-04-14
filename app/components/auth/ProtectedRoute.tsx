@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 
@@ -9,27 +9,9 @@ interface ProtectedRouteProps {
 const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children }) => {
   const { currentUser, loading, authError } = useAuth();
   const location = useLocation();
-  const [waitTime, setWaitTime] = useState(0);
 
-  // Add an extra check to prevent infinite loading
-  useEffect(() => {
-    let timer: NodeJS.Timeout;
-    
-    if (loading) {
-      // Set up a timer that increments every second
-      timer = setInterval(() => {
-        setWaitTime(prev => prev + 1);
-      }, 1000);
-    }
-
-    return () => {
-      if (timer) clearInterval(timer);
-    };
-  }, [loading]);
-
-  // If loading takes more than 5 seconds, show a different message
-  // and provide a link to login
-  if (loading && waitTime < 5) {
+  // If loading, show a simple spinner
+  if (loading) {
     return (
       <div className="auth-container" style={{ 
         display: 'flex',
@@ -49,7 +31,7 @@ const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children }) => {
           animation: 'spin 1s linear infinite',
           marginBottom: '16px'
         }}></div>
-        <p>Checking authentication status...</p>
+        <p>Loading...</p>
         <style>
           {`
             @keyframes spin {
@@ -58,38 +40,6 @@ const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children }) => {
             }
           `}
         </style>
-      </div>
-    );
-  }
-
-  // If loading takes too long, offer a way to navigate to login
-  if (loading && waitTime >= 5) {
-    return (
-      <div className="auth-container" style={{ 
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center', 
-        justifyContent: 'center',
-        height: '100vh',
-        backgroundColor: '#1C1A1C',
-        color: '#C2C2C2'
-      }}>
-        <h2 style={{ color: '#FF335F', marginBottom: '16px' }}>Taking longer than expected</h2>
-        <p>We're having trouble verifying your authentication status.</p>
-        <button 
-          onClick={() => window.location.href = '/login'}
-          style={{
-            marginTop: '20px',
-            padding: '10px 20px',
-            backgroundColor: '#FF335F',
-            color: 'white',
-            border: 'none',
-            borderRadius: '4px',
-            cursor: 'pointer'
-          }}
-        >
-          Go to Login
-        </button>
       </div>
     );
   }
