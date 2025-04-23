@@ -4,7 +4,6 @@
   "type": "module",
   "scripts": {
     "build": "react-router build",
-    "postbuild": "node netlify-postbuild.js",
     "dev": "react-router dev",
     "start": "npx serve -s build/client",
     "typecheck": "react-router typegen && tsc"
