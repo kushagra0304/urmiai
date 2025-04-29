@@ -1,0 +1,826 @@
+/* Importing Dashboard styles */
+@import '../components/dashboard/Dashboard.css';
+
+/* Mobile Navbar */
+.mobile-navbar {
+  display: none;
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background-color: #1A1A1A;
+  border-bottom: 1px solid #333;
+  padding: 0 16px;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 100;
+}
+
+.menu-toggle {
+  background: none;
+  border: none;
+  color: #f1f1f1;
+  cursor: pointer;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.navbar-logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo-svg {
+  height: 24px;
+}
+
+.navbar-right {
+  display: flex;
+  align-items: center;
+}
+
+.page-title {
+  font-size: 16px;
+  font-weight: 500;
+  color: #f1f1f1;
+}
+
+/* Phone Numbers Page Styles */
+.phone-numbers-page {
+  min-height: 100vh;
+}
+
+.phone-numbers-content {
+  padding: 10px 0;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.phone-numbers-title {
+  font-size: 28px;
+  font-weight: 600;
+  margin-bottom: 30px;
+  color: #f1f1f1;
+  position: relative;
+  display: inline-block;
+  padding-bottom: 10px;
+}
+
+.phone-numbers-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 60px;
+  height: 3px;
+  background: #FF335F;
+  border-radius: 3px;
+}
+
+/* Layout container for two-column design */
+.layout-container {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+/* Form Container */
+.form-container {
+  background-color: #1E1E1E;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  border: 1px solid #2c2c2c;
+  overflow: hidden;
+}
+
+.form-header {
+  padding: 20px 25px;
+  border-bottom: 1px solid #2c2c2c;
+  background-color: #1a1a1a;
+  display: flex;
+  align-items: center;
+}
+
+.form-header-icon {
+  width: 18px;
+  height: 18px;
+  margin-right: 10px;
+  opacity: 0.8;
+}
+
+.form-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #f1f1f1;
+  margin: 0;
+}
+
+.form-body {
+  padding: 25px;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.form-group {
+  margin-bottom: 5px;
+  position: relative;
+}
+
+.form-label {
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 8px;
+  color: #f1f1f1;
+}
+
+.form-input {
+  width: 100%;
+  padding: 12px 15px;
+  border-radius: 6px;
+  background-color: #252525;
+  border: 1px solid #333;
+  color: #f1f1f1;
+  font-size: 14px;
+  transition: all 0.2s ease;
+}
+
+.form-input:focus {
+  border-color: #FF335F;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(255, 51, 95, 0.2);
+}
+
+.form-input::placeholder {
+  color: #666;
+}
+
+.form-select {
+  width: 100%;
+  padding: 12px 15px;
+  border-radius: 6px;
+  background-color: #252525;
+  border: 1px solid #333;
+  color: #f1f1f1;
+  font-size: 14px;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23f1f1f1' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 16px;
+  transition: all 0.2s ease;
+}
+
+.form-select:focus {
+  border-color: #FF335F;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(255, 51, 95, 0.2);
+}
+
+.form-textarea {
+  width: 100%;
+  padding: 12px 15px;
+  border-radius: 6px;
+  background-color: #252525;
+  border: 1px solid #333;
+  color: #f1f1f1;
+  font-size: 14px;
+  min-height: 150px;
+  resize: vertical;
+  transition: all 0.2s ease;
+  line-height: 1.5;
+}
+
+.form-textarea:focus {
+  border-color: #FF335F;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(255, 51, 95, 0.2);
+}
+
+.form-textarea::placeholder {
+  color: #666;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+  padding-top: 20px;
+  gap: 10px;
+  border-top: 1px solid #2c2c2c;
+}
+
+.form-actions-right {
+  display: flex;
+}
+
+.form-button {
+  padding: 10px 18px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.button-cancel {
+  background-color: transparent;
+  border: 1px solid #333;
+  color: #f1f1f1;
+  margin-right: 12px;
+}
+
+.button-cancel:hover {
+  background-color: #2a2a2a;
+}
+
+.button-submit {
+  background-color: #FF335F;
+  border: none;
+  color: #fff;
+}
+
+.button-submit:hover {
+  background-color: #e62e56;
+}
+
+.button-icon {
+  width: 16px;
+  height: 16px;
+  margin-right: 8px;
+}
+
+/* Excel upload styles */
+.excel-upload-container {
+  position: relative;
+}
+
+.excel-upload-input {
+  position: absolute;
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  z-index: -1;
+}
+
+.button-excel-upload {
+  background-color: #2a2a2a;
+  border: 1px solid #333;
+  color: #f1f1f1;
+  display: flex;
+  align-items: center;
+}
+
+.button-excel-upload:hover {
+  background-color: #333;
+}
+
+/* Excel entry selection popup */
+.excel-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  backdrop-filter: blur(3px);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+.excel-modal-overlay.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.excel-modal {
+  width: 90%;
+  max-width: 800px;
+  max-height: 80vh;
+  background-color: #1E1E1E;
+  border-radius: 8px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+  transform: translateY(20px);
+  transition: transform 0.3s ease;
+}
+
+.excel-modal-overlay.open .excel-modal {
+  transform: translateY(0);
+}
+
+.excel-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  background-color: #1a1a1a;
+  border-bottom: 1px solid #2c2c2c;
+}
+
+.excel-modal-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #f1f1f1;
+  margin: 0;
+  display: flex;
+  align-items: center;
+}
+
+.excel-modal-title svg {
+  width: 18px;
+  height: 18px;
+  margin-right: 10px;
+}
+
+.excel-modal-close {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: #aaa;
+  font-size: 24px;
+  line-height: 1;
+  padding: 0;
+  transition: color 0.2s ease;
+}
+
+.excel-modal-close:hover {
+  color: #FF335F;
+}
+
+.excel-modal-body {
+  padding: 20px;
+  overflow-y: auto;
+  max-height: calc(80vh - 130px);
+}
+
+.excel-modal-subtitle {
+  font-size: 14px;
+  color: #aaa;
+  margin-bottom: 20px;
+}
+
+.excel-entries-list {
+  max-height: 350px;
+  overflow-y: auto;
+  border: 1px solid #333;
+  border-radius: 6px;
+  margin-bottom: 20px;
+}
+
+.excel-entry {
+  padding: 15px;
+  border-bottom: 1px solid #333;
+  transition: background-color 0.2s ease;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.excel-entry:last-child {
+  border-bottom: none;
+}
+
+.excel-entry:hover {
+  background-color: #252525;
+}
+
+.excel-entry.selected {
+  background-color: rgba(255, 51, 95, 0.1);
+  border-left: 3px solid #FF335F;
+}
+
+.excel-entry-checkbox {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 18px;
+  height: 18px;
+  border: 2px solid #555;
+  border-radius: 3px;
+  margin-right: 12px;
+  position: relative;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.excel-entry-checkbox:checked {
+  background-color: #FF335F;
+  border-color: #FF335F;
+}
+
+.excel-entry-checkbox:checked::after {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 5px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.excel-entry-details {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 10px;
+  width: 100%;
+}
+
+.excel-entry-field {
+  display: flex;
+  flex-direction: column;
+}
+
+.excel-entry-label {
+  font-size: 12px;
+  color: #777;
+  margin-bottom: 2px;
+}
+
+.excel-entry-value {
+  font-size: 14px;
+  color: #f1f1f1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.excel-modal-footer {
+  padding: 16px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid #2c2c2c;
+  background-color: #1a1a1a;
+}
+
+.excel-modal-counter {
+  font-size: 14px;
+  color: #aaa;
+}
+
+.excel-modal-counter strong {
+  color: #f1f1f1;
+}
+
+.excel-modal-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.excel-modal-button {
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+}
+
+.excel-modal-button.cancel {
+  background-color: transparent;
+  border: 1px solid #333;
+  color: #f1f1f1;
+}
+
+.excel-modal-button.cancel:hover {
+  background-color: #2a2a2a;
+}
+
+.excel-modal-button.confirm {
+  background-color: #FF335F;
+  border: none;
+  color: #fff;
+}
+
+.excel-modal-button.confirm:hover {
+  background-color: #e62e56;
+}
+
+.excel-modal-button-icon {
+  width: 16px;
+  height: 16px;
+  margin-right: 8px;
+}
+
+/* Excel template section */
+.excel-template-section {
+  background-color: #1E1E1E;
+  border-radius: 8px;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+.excel-template-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #f1f1f1;
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+}
+
+.excel-template-icon {
+  width: 16px;
+  height: 16px;
+  margin-right: 8px;
+}
+
+.excel-template-container {
+  overflow-x: auto;
+  border-radius: 6px;
+  border: 1px solid #333;
+}
+
+.excel-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.excel-table th,
+.excel-table td {
+  padding: 10px 15px;
+  text-align: left;
+  border: 1px solid #333;
+}
+
+.excel-table th {
+  background-color: #252525;
+  color: #f1f1f1;
+  font-weight: 500;
+}
+
+.excel-table td {
+  background-color: #1a1a1a;
+  color: #aaa;
+}
+
+.excel-download-link {
+  display: inline-flex;
+  align-items: center;
+  color: #FF335F;
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  margin-top: 15px;
+  transition: all 0.2s ease;
+}
+
+.excel-download-link:hover {
+  text-decoration: underline;
+}
+
+.excel-download-icon {
+  width: 16px;
+  height: 16px;
+  margin-right: 8px;
+}
+
+/* Sample Prompts Section */
+.sample-prompts-section {
+  background-color: #1E1E1E;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  border: 1px solid #2c2c2c;
+  overflow: hidden;
+}
+
+.sample-prompts-header {
+  padding: 20px 25px;
+  border-bottom: 1px solid #2c2c2c;
+  background-color: #1a1a1a;
+  display: flex;
+  align-items: center;
+}
+
+.sample-prompts-icon {
+  width: 18px;
+  height: 18px;
+  margin-right: 10px;
+  opacity: 0.8;
+}
+
+.sample-prompts-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #f1f1f1;
+  margin: 0;
+}
+
+.sample-prompts-body {
+  padding: 25px;
+}
+
+.sample-prompts-description {
+  color: #aaa;
+  font-size: 14px;
+  margin-bottom: 20px;
+  line-height: 1.5;
+}
+
+.sample-prompts-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.sample-prompt-card {
+  background-color: #252525;
+  border-radius: 6px;
+  padding: 18px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: 1px solid #333;
+  position: relative;
+  overflow: hidden;
+}
+
+.sample-prompt-card:hover {
+  background-color: #2a2a2a;
+  border-color: #FF335F;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.sample-prompt-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: #FF335F;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.sample-prompt-card:hover::before {
+  opacity: 1;
+}
+
+.sample-prompt-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: #f1f1f1;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+}
+
+.sample-prompt-type-icon {
+  width: 14px;
+  height: 14px;
+  margin-right: 8px;
+  fill: #FF335F;
+}
+
+.sample-prompt-content {
+  font-size: 13px;
+  color: #aaa;
+  line-height: 1.5;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.sample-prompt-card:hover .sample-prompt-content {
+  color: #ccc;
+}
+
+/* Media Queries */
+@media (max-width: 992px) {
+  .sample-prompts-container {
+    grid-template-columns: 1fr;
+  }
+  
+  .form-row {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .excel-entry-details {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .mobile-navbar {
+    display: flex;
+  }
+  
+  .sidebar {
+    position: fixed;
+    transform: translateX(-100%);
+    z-index: 200;
+    transition: transform 0.3s ease;
+  }
+  
+  .sidebar.open {
+    transform: translateX(0);
+  }
+  
+  .main-content {
+    margin-left: 0;
+  }
+  
+  .phone-numbers-page {
+    padding: 15px;
+  }
+  
+  .form-header, .sample-prompts-header {
+    padding: 15px 20px;
+  }
+  
+  .form-body, .sample-prompts-body {
+    padding: 20px;
+  }
+  
+  .phone-numbers-title {
+    font-size: 22px;
+  }
+
+  .form-actions {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .form-actions-right {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .button-cancel, .button-excel-upload {
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+
+  .excel-entry-details {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .form-header, .sample-prompts-header {
+    padding: 12px 15px;
+  }
+  
+  .form-body, .sample-prompts-body {
+    padding: 15px;
+  }
+
+  .excel-table {
+    font-size: 12px;
+  }
+
+  .excel-table th,
+  .excel-table td {
+    padding: 8px 10px;
+  }
+
+  .excel-modal-header,
+  .excel-modal-footer {
+    padding: 12px 15px;
+  }
+
+  .excel-modal-body {
+    padding: 15px;
+  }
+
+  .excel-modal-footer {
+    flex-direction: column;
+    gap: 15px;
+    align-items: flex-start;
+  }
+
+  .excel-modal-actions {
+    width: 100%;
+    justify-content: space-between;
+  }
+} 

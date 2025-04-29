@@ -72,10 +72,10 @@ const Sidebar = ({ sidebarOpen, toggleSidebar }: SidebarProps) => {
             <span className="sidebar-icon">⚙️</span>
             <span>Workflows</span>
           </a>
-          <a href="#" className="sidebar-link">
+          <Link to="/phone-numbers" className={`sidebar-link ${isActive('/phone-numbers') ? 'active' : ''}`}>
             <span className="sidebar-icon">📱</span>
             <span>Phone Numbers</span>
-          </a>
+          </Link>
           <a href="#" className="sidebar-link">
             <span className="sidebar-icon">🔧</span>
             <span>Tools</span>
