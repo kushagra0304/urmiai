@@ -197,38 +197,159 @@ export default function LandingPage() {
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, ease: "easeOut" }}
-              viewport={{ once: false }}
+              viewport={{ once: true }}
             >
-              <img src="/assets/urmi-avatar.png" alt="URMI AI Assistant" />
+              <motion.div 
+                className="orb-container"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.5, duration: 1 }}
+              >
+                <div className="orb orb-1"></div>
+                <div className="orb orb-2"></div>
+              </motion.div>
+              <motion.img 
+                src="/assets/urmi-avatar.png" 
+                alt="URMI AI Assistant"
+                transition={{
+                  type: "spring",
+                  stiffness: 260,
+                  damping: 20
+                }}
+              />
             </motion.div>
             <motion.div
               className="urmi-right"
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, ease: "easeOut" }}
-              viewport={{ once: false }}
+              viewport={{ once: true }}
             >
-              <motion.h1
-                style={{ fontFamily: "Space Grotesk" }}
+              <motion.div
+                className="title-container"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.2 }}
-                viewport={{ once: false }}
+                viewport={{ once: true }}
               >
-                What is URMI?
-              </motion.h1>
+                <motion.h1
+                  animate={{
+                    textShadow: [
+                      "0px 2px 4px rgba(0, 0, 0, 0.5), 0px 0px 10px rgba(255, 64, 109, 0.2)",
+                      "0px 2px 4px rgba(0, 0, 0, 0.5), 0px 0px 20px rgba(255, 64, 109, 0.4)",
+                      "0px 2px 4px rgba(0, 0, 0, 0.5), 0px 0px 10px rgba(255, 64, 109, 0.2)"
+                    ]
+                  }}
+                  transition={{
+                    duration: 3,
+                    repeat: Infinity,
+                    repeatType: "reverse"
+                  }}
+                >
+                  What is URMI?
+                </motion.h1>
+              </motion.div>
               <motion.p
-                style={{ fontFamily: "Space Grotesk" }}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.4 }}
-                viewport={{ once: false }}
+                viewport={{ once: true }}
               >
-                URMI is an advanced AI-driven voice assistant designed to
-                transform customer interactions across various industries. URMI
-                delivers seamless, human-like conversations to enhance customer
-                engagement.
+                URMI is an advanced AI-driven voice assistant designed to transform customer interactions across various industries. Leveraging cutting-edge natural language processing and machine learning technologies, URMI delivers seamless, human-like conversations that enhance engagement while maintaining efficiency and scalability.
               </motion.p>
+              
+              <div className="urmi-highlights">
+                <motion.div 
+                  className="highlight-item"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.5 }}
+                  viewport={{ once: true }}
+                  whileHover={{ y: -8, boxShadow: "0 10px 25px -10px rgba(255, 52, 96, 0.5)" }}
+                >
+                  <svg className="highlight-icon" width="26" height="26" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M18.9 9.7L15.5 6.3C15.1 5.9 14.5 5.9 14.1 6.3C13.7 6.7 13.7 7.3 14.1 7.7L15.4 9H7C5.3 9 4 10.3 4 12V17C4 17.6 4.4 18 5 18C5.6 18 6 17.6 6 17V12C6 11.4 6.4 11 7 11H15.4L14.1 12.3C13.7 12.7 13.7 13.3 14.1 13.7C14.3 13.9 14.5 14 14.8 14C15.1 14 15.3 13.9 15.5 13.7L18.9 10.3C19.3 9.9 19.3 9.1 18.9 9.7Z" fill="url(#paint0_linear)" />
+                    <path d="M10.2 21.4C12.8 21.4 15.1 20 16.2 17.9C16.5 17.4 16.3 16.7 15.8 16.5C15.3 16.2 14.6 16.4 14.4 16.9C13.6 18.4 12 19.4 10.2 19.4C7.4 19.4 5 17.1 5 14.2C5 13.6 4.6 13.2 4 13.2C3.4 13.2 3 13.6 3 14.2C3 18.2 6.3 21.4 10.2 21.4Z" fill="url(#paint0_linear)" />
+                    <path d="M8.2 9.8C8.6 9.8 9.1 9.7 9.5 9.5C9.9 9.3 10.3 9 10.6 8.8C10.9 8.5 11.1 8.1 11.3 7.7C11.5 7.3 11.5 6.9 11.5 6.4C11.5 5.9 11.4 5.5 11.3 5.1C11.1 4.7 10.9 4.3 10.6 4C10.3 3.7 9.9 3.5 9.5 3.3C9.1 3.1 8.6 3 8.2 3C7.7 3 7.3 3.1 6.9 3.3C6.5 3.5 6.1 3.7 5.8 4C5.5 4.3 5.2 4.7 5.1 5.1C4.9 5.5 4.9 5.9 4.9 6.4C4.9 6.9 5 7.3 5.1 7.7C5.3 8.1 5.5 8.5 5.8 8.8C6.1 9.1 6.5 9.3 6.9 9.5C7.3 9.7 7.7 9.8 8.2 9.8ZM6.8 5.9C7.1 5.6 7.6 5.3 8.2 5.3C8.8 5.3 9.2 5.6 9.5 5.9C9.8 6.2 10 6.6 10 7.1C10 7.6 9.8 8 9.5 8.3C9.2 8.6 8.8 8.9 8.2 8.9C7.6 8.9 7.1 8.6 6.8 8.3C6.5 8 6.3 7.6 6.3 7.1C6.3 6.6 6.5 6.2 6.8 5.9Z" fill="url(#paint0_linear)" />
+                    <path d="M19.8 3C19.3 3 18.9 3.1 18.5 3.3C18.1 3.5 17.7 3.7 17.4 4C17.1 4.3 16.8 4.7 16.7 5.1C16.5 5.5 16.5 5.9 16.5 6.4C16.5 6.9 16.6 7.3 16.7 7.7C16.9 8.1 17.1 8.5 17.4 8.8C17.7 9.1 18.1 9.3 18.5 9.5C18.9 9.7 19.3 9.8 19.8 9.8C20.2 9.8 20.7 9.7 21.1 9.5C21.5 9.3 21.9 9 22.2 8.8C22.5 8.5 22.7 8.1 22.9 7.7C23.1 7.3 23.1 6.9 23.1 6.4C23.1 5.9 23 5.5 22.9 5.1C22.7 4.7 22.5 4.3 22.2 4C21.9 3.7 21.5 3.5 21.1 3.3C20.7 3.1 20.2 3 19.8 3ZM19.8 8.4C19.2 8.4 18.7 8.1 18.4 7.8C18.1 7.5 17.9 7.1 17.9 6.6C17.9 6.1 18.1 5.7 18.4 5.4C18.7 5.1 19.2 4.8 19.8 4.8C20.4 4.8 20.8 5.1 21.1 5.4C21.4 5.7 21.6 6.1 21.6 6.6C21.6 7.1 21.4 7.5 21.1 7.8C20.9 8.1 20.4 8.4 19.8 8.4Z" fill="url(#paint0_linear)" />
+                    <defs>
+                      <linearGradient id="paint0_linear" x1="3" y1="3" x2="20" y2="21" gradientUnits="userSpaceOnUse">
+                        <stop stopColor="#FF3460"/>
+                        <stop offset="1" stopColor="#FF5B82"/>
+                      </linearGradient>
+                    </defs>
+                  </svg>
+                  <span className="highlight-text">AI-Powered</span>
+                </motion.div>
+                
+                <motion.div 
+                  className="highlight-item"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.6 }}
+                  viewport={{ once: true }}
+                  whileHover={{ y: -8, boxShadow: "0 10px 25px -10px rgba(255, 52, 96, 0.5)" }}
+                >
+                  <svg className="highlight-icon" width="26" height="26" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M19 3H5C3.9 3 3 3.9 3 5V19C3 20.1 3.9 21 5 21H19C20.1 21 21 20.1 21 19V5C21 3.9 20.1 3 19 3ZM19 19H5V5H19V19Z" fill="url(#paint0_linear)" />
+                    <path d="M16 10.9C16 11.5 15.6 12 15 12.1L12.8 15.1C12.4 15.7 11.7 16 11 16H8C6.9 16 6 15.1 6 14V10C6 9.3 6.3 8.6 6.9 8.2L10.9 6.5C11.7 6.1 12.7 6.5 13.1 7.3C13.1 7.3 13.1 7.4 13.2 7.4L15.9 9.7C16 10.1 16 10.5 16 10.9Z" fill="url(#paint0_linear)" />
+                    <path d="M8.5 17.5C9.32843 17.5 10 16.8284 10 16C10 15.1716 9.32843 14.5 8.5 14.5C7.67157 14.5 7 15.1716 7 16C7 16.8284 7.67157 17.5 8.5 17.5Z" fill="url(#paint0_linear)" />
+                    <defs>
+                      <linearGradient id="paint0_linear" x1="3" y1="3" x2="21" y2="21" gradientUnits="userSpaceOnUse">
+                        <stop stopColor="#FF3460"/>
+                        <stop offset="1" stopColor="#FF5B82"/>
+                      </linearGradient>
+                    </defs>
+                  </svg>
+                  <span className="highlight-text">Enterprise-Ready</span>
+                </motion.div>
+                
+                <motion.div 
+                  className="highlight-item"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.7 }}
+                  viewport={{ once: true }}
+                  whileHover={{ y: -8, boxShadow: "0 10px 25px -10px rgba(255, 52, 96, 0.5)" }}
+                >
+                  <svg className="highlight-icon" width="26" height="26" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M16 6C16 8.2 14.2 10 12 10C9.8 10 8 8.2 8 6C8 3.8 9.8 2 12 2C14.2 2 16 3.8 16 6Z" fill="url(#paint0_linear)" />
+                    <path d="M20 17.5C20 19.9 18.4 22 16 22H8C5.6 22 4 19.9 4 17.5C4 15.1 5.6 13 8 13H16C18.4 13 20 15.1 20 17.5Z" fill="url(#paint0_linear)" />
+                    <defs>
+                      <linearGradient id="paint0_linear" x1="4" y1="2" x2="20" y2="22" gradientUnits="userSpaceOnUse">
+                        <stop stopColor="#FF3460"/>
+                        <stop offset="1" stopColor="#FF5B82"/>
+                      </linearGradient>
+                    </defs>
+                  </svg>
+                  <span className="highlight-text">Customer-Focused</span>
+                </motion.div>
+              </div>
+              
+              <motion.div 
+                className="urmi-learn-more-container"
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                transition={{ duration: 0.5, delay: 0.9 }}
+                viewport={{ once: true }}
+              >
+                <motion.a 
+                  className="urmi-learn-more"
+                  href="#capabilities"
+                  whileHover={{ 
+                    y: -5, 
+                    boxShadow: "0 20px 40px -15px rgba(255, 52, 96, 0.7)",
+                    scale: 1.05
+                  }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  <span>Discover Capabilities</span>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M5 12H19" stroke="#ffffff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    <path d="M12 5L19 12L12 19" stroke="#ffffff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                </motion.a>
+              </motion.div>
             </motion.div>
           </div>
 
@@ -298,84 +419,235 @@ export default function LandingPage() {
                     duration: 0.8,
                     ease: [0.25, 0.1, 0.25, 1],
                   }}
-                  viewport={{ once: false, margin: "-100px" }}
+                  viewport={{ once: true, margin: "-100px" }}
                 >
-                  {Array.from("MAKE URMITRULY YOURS").map((char, index) => (
-                    <React.Fragment key={index}>
-                      <motion.span
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        transition={{
-                          duration: 0.5,
-                          delay: index * 0.03,
-                          ease: [0.25, 0.1, 0.25, 1],
-                        }}
-                        style={{ display: "inline-block" }}
-                      >
-                        {char === " " ? "\u00A0" : char}
-                      </motion.span>
-                      {index === 8 && <br />}
-                    </React.Fragment>
-                  ))}
+                  <motion.span
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.7, delay: 0.1 }}
+                    viewport={{ once: true }}
+                  >
+                    MAKE URMI
+                  </motion.span>
+                  <br />
+                  <motion.span
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.7, delay: 0.3 }}
+                    viewport={{ once: true }}
+                  >
+                    TRULY YOURS
+                  </motion.span>
                 </motion.h2>
-                <motion.a
-                  href="#contact"
-                  className="pricing-cta-button"
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  transition={{
-                    duration: 0.5,
-                    delay: 0.5,
-                    ease: "easeOut",
-                  }}
-                  whileHover={{
-                    scale: 1.05,
-                    backgroundColor: "#FF4F78",
-                    transition: { duration: 0.3 },
-                  }}
-                  whileTap={{ scale: 0.95 }}
-                  viewport={{ once: false }}
+                <motion.p
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.5 }}
+                  viewport={{ once: true }}
+                  className="pricing-description"
                 >
-                  GET YOUR URMI
-                </motion.a>
-              </div>
-              <div className="pricing-right">
-                <h3 className="enterprise-plan">Enterprise Plan</h3>
-                <p className="plan-cost">8-10 Rs/min</p>
-                <div className="enterprise-features">
-                  <p>Fully tailored AI assistant for large-scale operations</p>
-                  <p>
-                    Unlimited call handling, deep analytics, and priority
-                    support
-                  </p>
-                  <p>Dedicated AI training and deployment</p>
-                </div>
+                  Customize URMI to meet your exact business requirements with our flexible plans designed for organizations of all sizes.
+                </motion.p>
               </div>
             </div>
 
-            <div className="pricing-plans">
-              <div className="pricing-plan">
+            <motion.div 
+              className="pricing-plans three-cards"
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.5 }}
+              viewport={{ once: true }}
+            >
+              <motion.div 
+                className="pricing-plan"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.6 }}
+                viewport={{ once: true }}
+                whileHover={{ 
+                  y: -10, 
+                  boxShadow: "0 30px 60px -20px rgba(0, 0, 0, 0.5)",
+                  transition: { duration: 0.4 }
+                }}
+              >
+                <div className="plan-tag">Starter</div>
                 <h4 className="pricing-plan-title">Basic Plan</h4>
                 <p className="pricing-plan-cost">4-6 Rs/min</p>
+                <div className="pricing-plan-summary">Perfect for startups and growing businesses</div>
                 <div className="pricing-plan-features">
-                  <p>Ideal for startups and small businesses</p>
                   <p>
-                    Includes core AI voice assistant features and CRM
-                    integration
+                    <span className="feature-bullet">•</span>
+                    Ideal for startups and small businesses
+                  </p>
+                  <p>
+                    <span className="feature-bullet">•</span>
+                    Core AI voice assistant features
+                  </p>
+                  <p>
+                    <span className="feature-bullet">•</span>
+                    CRM integration capabilities
+                  </p>
+                  <p>
+                    <span className="feature-bullet">•</span>
+                    Easy setup and deployment
                   </p>
                 </div>
-              </div>
-              <div className="pricing-plan">
-                <h4 className="pricing-plan-title">Professional Plan</h4>
+                <motion.button 
+                  className="plan-select-button"
+                  whileHover={{ 
+                    scale: 1.05,
+                    boxShadow: "0 10px 20px -5px rgba(255, 52, 96, 0.4)",
+                  }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  Select Plan
+                </motion.button>
+              </motion.div>
+
+              <motion.div 
+                className="pricing-plan featured-plan"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.7 }}
+                viewport={{ once: true }}
+                whileHover={{ 
+                  y: -10, 
+                  boxShadow: "0 30px 60px -20px rgba(255, 52, 96, 0.4)",
+                  transition: { duration: 0.4 }
+                }}
+              >
+                <div className="plan-tag featured">Popular</div>
+                <h4 className="pricing-plan-title">Premium Plan</h4>
                 <p className="pricing-plan-cost">6-8 Rs/min</p>
+                <div className="pricing-plan-summary">Enhanced features for mid to large businesses</div>
                 <div className="pricing-plan-features">
-                  <p>Advanced AI capabilities with multilingual support</p>
-                  <p>CRM and ticketing system integrations</p>
-                  <p>Customizable AI models for industry-specific needs</p>
+                  <p>
+                    <span className="feature-bullet">•</span>
+                    Advanced AI with multilingual support
+                  </p>
+                  <p>
+                    <span className="feature-bullet">•</span>
+                    CRM and ticketing system integrations
+                  </p>
+                  <p>
+                    <span className="feature-bullet">•</span>
+                    Industry-specific AI customization
+                  </p>
+                  <p>
+                    <span className="feature-bullet">•</span>
+                    Analytics dashboard and reporting
+                  </p>
                 </div>
-              </div>
-            </div>
+                <motion.button 
+                  className="plan-select-button featured"
+                  whileHover={{ 
+                    scale: 1.05,
+                    boxShadow: "0 10px 20px -5px rgba(255, 52, 96, 0.7)",
+                  }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  Select Plan
+                </motion.button>
+              </motion.div>
+
+              <motion.div 
+                className="pricing-plan enterprise-plan"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.8 }}
+                viewport={{ once: true }}
+                whileHover={{ 
+                  y: -10, 
+                  boxShadow: "0 30px 60px -20px rgba(0, 0, 0, 0.5)",
+                  transition: { duration: 0.4 }
+                }}
+              >
+                <div className="plan-tag enterprise">Enterprise</div>
+                <h4 className="pricing-plan-title">Enterprise Plan</h4>
+                <p className="pricing-plan-cost">8-10 Rs/min</p>
+                <div className="pricing-plan-summary">Tailored solutions for enterprise requirements</div>
+                <div className="pricing-plan-features">
+                  <p>
+                    <span className="feature-bullet">•</span>
+                    Fully tailored AI for large-scale operations
+                  </p>
+                  <p>
+                    <span className="feature-bullet">•</span>
+                    Unlimited calls and priority support
+                  </p>
+                  <p>
+                    <span className="feature-bullet">•</span>
+                    Dedicated AI training and deployment
+                  </p>
+                  <p>
+                    <span className="feature-bullet">•</span>
+                    Custom integrations and data security
+                  </p>
+                </div>
+                <motion.button 
+                  className="plan-select-button enterprise"
+                  whileHover={{ 
+                    scale: 1.05,
+                    boxShadow: "0 10px 20px -5px rgba(255, 255, 255, 0.2)",
+                  }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  Contact Sales
+                </motion.button>
+              </motion.div>
+            </motion.div>
+            
+            <motion.div 
+              className="pricing-cta"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.9 }}
+              viewport={{ once: true }}
+            >
+              <motion.div className="pricing-guarantee">
+                <motion.div 
+                  className="guarantee-icon"
+                  initial={{ scale: 0 }}
+                  whileInView={{ scale: 1 }}
+                  transition={{ duration: 0.5, delay: 1.0 }}
+                  viewport={{ once: true }}
+                >
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="#FF3460" strokeWidth="1.5"/>
+                    <path d="M8 12L11 15L16 9" stroke="#FF3460" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                </motion.div>
+                <p>30-day satisfaction guarantee with all plans</p>
+              </motion.div>
+              <motion.a
+                href="#contact"
+                className="pricing-cta-button"
+                whileHover={{
+                  scale: 1.05,
+                  boxShadow: "0 20px 40px -10px rgba(255, 52, 96, 0.7)",
+                  transition: { duration: 0.3 },
+                }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <span style={{ position: 'relative', zIndex: 1 }}>Get Custom Quote</span>
+                <motion.svg 
+                  width="16" 
+                  height="16" 
+                  viewBox="0 0 24 24" 
+                  fill="none" 
+                  xmlns="http://www.w3.org/2000/svg"
+                  style={{ marginLeft: 10, position: 'relative', zIndex: 1 }}
+                  animate={{ x: [0, 5, 0] }}
+                  transition={{ duration: 1.5, repeat: Infinity, repeatType: "loop" }}
+                >
+                  <path d="M5 12H19" stroke="#ffffff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  <path d="M12 5L19 12L12 19" stroke="#ffffff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                </motion.svg>
+              </motion.a>
+            </motion.div>
           </div>
+          
+          <div className="pricing-pattern-bottom"></div>
         </section>
 
         {/* Business Benefits Section */}
@@ -394,7 +666,27 @@ export default function LandingPage() {
                   }}
                   viewport={{ once: false, amount: 0.3 }}
                 >
-                  GROW YOUR BUSINESS WITH URMI
+                  <motion.span 
+                    className="gradient-text"
+                    animate={{
+                      backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'],
+                    }}
+                    transition={{
+                      duration: 10,
+                      repeat: Infinity,
+                      repeatType: "reverse"
+                    }}
+                  >
+                    GROW YOUR BUSINESS
+                  </motion.span>
+                  <br />
+                  <motion.span
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.3, duration: 0.8 }}
+                  >
+                    WITH URMI
+                  </motion.span>
                 </motion.h2>
                 <div className="business-benefits-line">
                   <motion.p
@@ -404,13 +696,21 @@ export default function LandingPage() {
                     transition={{ duration: 0.6, delay: 0.3 }}
                     viewport={{ once: false, amount: 0.3 }}
                   >
-                    Deliver a premium experience to your Clients with URMI.
-                    Businesses report to save upto{" "}
+                    <motion.span 
+                      className="highlight-prefix"
+                      initial={{ width: 0 }}
+                      whileInView={{ width: "3px" }}
+                      transition={{ duration: 0.4 }}
+                      viewport={{ once: false }}
+                    />
+                    Deliver a premium experience to your clients with URMI's advanced AI technology. 
+                    Forward-thinking businesses report saving up to{" "}
                     <motion.span
                       className="business-benefits-highlight"
-                      initial={{ scale: 1 }}
+                      initial={{ scale: 1, backgroundColor: "rgba(255, 52, 96, 0.1)" }}
                       whileInView={{
                         scale: [1, 1.2, 1],
+                        backgroundColor: ["rgba(255, 52, 96, 0.1)", "rgba(255, 52, 96, 0.3)", "rgba(255, 52, 96, 0.1)"]
                       }}
                       transition={{
                         duration: 1.2,
@@ -422,7 +722,25 @@ export default function LandingPage() {
                     >
                       60%
                     </motion.span>{" "}
-                    on cost in long run along with increased efficiency.
+                    on operational costs while experiencing a{" "}
+                    <motion.span
+                      className="business-benefits-highlight"
+                      initial={{ scale: 1, backgroundColor: "rgba(255, 52, 96, 0.1)" }}
+                      whileInView={{
+                        scale: [1, 1.2, 1],
+                        backgroundColor: ["rgba(255, 52, 96, 0.1)", "rgba(255, 52, 96, 0.3)", "rgba(255, 52, 96, 0.1)"]
+                      }}
+                      transition={{
+                        duration: 1.2,
+                        delay: 1.2,
+                        repeat: 1,
+                        repeatDelay: 2,
+                      }}
+                      viewport={{ once: false }}
+                    >
+                      40%
+                    </motion.span>{" "}
+                    increase in customer satisfaction scores.
                   </motion.p>
                   <motion.p
                     className="business-benefits-tagline"
@@ -431,15 +749,45 @@ export default function LandingPage() {
                     transition={{ duration: 0.6, delay: 0.6 }}
                     viewport={{ once: false, amount: 0.3 }}
                   >
-                    Go Limitless with URMI
+                    <motion.span
+                      className="shine-effect"
+                      animate={{
+                        backgroundPosition: ['-100%', '200%'],
+                      }}
+                      transition={{
+                        duration: 3,
+                        repeat: Infinity,
+                        repeatDelay: 5
+                      }}
+                    >
+                      Go Limitless with URMI
+                    </motion.span> — Transform Your Customer Experience Today
                   </motion.p>
                   <motion.a
                     href="#try"
                     className="business-benefits-button"
-                    whileHover={{ scale: 1.05 }}
+                    whileHover={{ 
+                      scale: 1.05, 
+                      boxShadow: "0 10px 25px rgba(255, 52, 96, 0.5)",
+                      background: "linear-gradient(135deg, #ff426d, #ff3460, #ff426d)",
+                      backgroundSize: "200% 200%",
+                      backgroundPosition: ["0% 0%", "100% 100%"]
+                    }}
                     whileTap={{ scale: 0.95 }}
                   >
-                    TRY NOW
+                    <motion.div
+                      className="button-content"
+                      animate={{
+                        background: ["rgba(255,255,255,0)", "rgba(255,255,255,0.1)", "rgba(255,255,255,0)"],
+                      }}
+                      transition={{
+                        duration: 2,
+                        repeat: Infinity,
+                        repeatType: "reverse"
+                      }}
+                    >
+                      START NOW
+                    </motion.div>
                     <motion.span
                       className="business-benefits-arrow"
                       animate={{ x: [0, 5, 0] }}
@@ -453,24 +801,52 @@ export default function LandingPage() {
             </div>
 
             <div className="benefits-cards">
-              <div className="benefit-card">
+              <motion.div 
+                className="benefit-card"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.3 }}
+                viewport={{ once: false }}
+                whileHover={{ y: -10, boxShadow: "0 15px 30px rgba(255, 52, 96, 0.2)" }}
+              >
                 <h3>Cost Effective</h3>
-                <p>Reduces operational costs with AI-driven automation.</p>
-              </div>
-              <div className="benefit-card">
+                <p>Reduces operational costs by up to 60% with AI-driven automation and streamlined customer service workflows.</p>
+              </motion.div>
+              <motion.div 
+                className="benefit-card"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.4 }}
+                viewport={{ once: false }}
+                whileHover={{ y: -10, boxShadow: "0 15px 30px rgba(255, 52, 96, 0.2)" }}
+              >
                 <h3>Scalable</h3>
                 <p>
-                  Grows with your business, from startups to large enterprises
+                  Seamlessly grows with your business, handling from 10 to 10,000+ interactions daily without performance degradation.
                 </p>
-              </div>
-              <div className="benefit-card">
+              </motion.div>
+              <motion.div 
+                className="benefit-card"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.5 }}
+                viewport={{ once: false }}
+                whileHover={{ y: -10, boxShadow: "0 15px 30px rgba(255, 52, 96, 0.2)" }}
+              >
                 <h3>Human-Like AI</h3>
-                <p>Delivers engaging, natural customer interactions</p>
-              </div>
-              <div className="benefit-card">
+                <p>Delivers engaging, natural customer interactions with 95% accuracy in understanding complex requests and context.</p>
+              </motion.div>
+              <motion.div 
+                className="benefit-card"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.6 }}
+                viewport={{ once: false }}
+                whileHover={{ y: -10, boxShadow: "0 15px 30px rgba(255, 52, 96, 0.2)" }}
+              >
                 <h3>Enterprise Solutions</h3>
-                <p>Adapts to your unique business needs.</p>
-              </div>
+                <p>Adapts to your unique business needs with custom integrations for CRM, ERP, and other enterprise systems.</p>
+              </motion.div>
             </div>
           </div>
         </section>
@@ -495,13 +871,31 @@ export default function LandingPage() {
               whileInView={{ scale: 1, opacity: 1 }}
               transition={{ duration: 0.8, ease: [0.4, 0, 0.2, 1] }}
             >
-              <motion.h2
-                initial={{ letterSpacing: "0px" }}
-                whileInView={{ letterSpacing: "2px" }}
-                transition={{ duration: 1.2, delay: 0.2 }}
-              >
-                OPTIMIZE . GROW. ENHANCE
-              </motion.h2>
+              <div className="capabilities-title-container">
+                <motion.h2
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: 0.2 }}
+                >
+                  <span className="gradient-text">OPTIMIZE</span>
+                  {' . '}
+                  <motion.span
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    transition={{ duration: 1, delay: 0.5 }}
+                  >
+                    GROW
+                  </motion.span>
+                  {'. '}
+                  <span className="gradient-text">ENHANCE</span>
+                </motion.h2>
+                <motion.div 
+                  className="title-accent-line"
+                  initial={{ width: 0, opacity: 0 }}
+                  whileInView={{ width: '120px', opacity: 1 }}
+                  transition={{ duration: 1, delay: 0.8 }}
+                />
+              </div>
             </motion.div>
 
             <div className="capabilities-columns">
@@ -599,26 +993,39 @@ export default function LandingPage() {
             whileInView={{ y: 0 }}
             transition={{ duration: 0.6, ease: "easeOut" }}
           >
-            <motion.h2 
-              className="industry-title"
-              initial={{ opacity: 0, y: -20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.1 }}
-            >
-              INDUSTRY USE CASES
-            </motion.h2>
+            <div className="section-header-container">
+              <motion.h2 
+                className="industry-title"
+                initial={{ opacity: 0, y: -20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7, delay: 0.1 }}
+              >
+                INDUSTRY USE CASES
+              </motion.h2>
+              <motion.p
+                className="industry-subtitle"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7, delay: 0.3 }}
+              >
+                Discover how URMI transforms operations across various sectors
+              </motion.p>
+            </div>
 
             <div className="industry-grid">
               <motion.div 
                 className="industry-card"
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.5, delay: 0.1 }}
-                whileHover={{ scale: 1.05, boxShadow: "0px 8px 24px rgba(0, 0, 0, 0.15)" }}
+                initial={{ opacity: 0, scale: 0.9, y: 30 }}
+                whileInView={{ opacity: 1, scale: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.1, type: "spring", stiffness: 100 }}
+                whileHover={{ scale: 1.02, y: -10 }}
+                whileTap={{ scale: 0.98 }}
               >
                 <motion.div 
                   className="industry-icon"
-                  whileHover={{ rotate: [0, -5, 5, -5, 0], transition: { duration: 0.5 } }}
+                  whileHover={{ rotate: [0, -5, 5, -5, 0], scale: 1.1, transition: { duration: 0.5 } }}
+                  animate={{ boxShadow: ["0 10px 20px -10px rgba(0, 0, 0, 0.3)", "0 15px 30px -10px rgba(255, 52, 96, 0.3)", "0 10px 20px -10px rgba(0, 0, 0, 0.3)"] }}
+                  transition={{ duration: 4, repeat: Infinity, repeatType: "reverse" }}
                 >
                   <svg
                     width="72"
@@ -665,14 +1072,17 @@ export default function LandingPage() {
 
               <motion.div 
                 className="industry-card"
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.5, delay: 0.2 }}
-                whileHover={{ scale: 1.05, boxShadow: "0px 8px 24px rgba(0, 0, 0, 0.15)" }}
+                initial={{ opacity: 0, scale: 0.9, y: 30 }}
+                whileInView={{ opacity: 1, scale: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.2, type: "spring", stiffness: 100 }}
+                whileHover={{ scale: 1.02, y: -10 }}
+                whileTap={{ scale: 0.98 }}
               >
                 <motion.div 
                   className="industry-icon"
-                  whileHover={{ rotate: [0, -5, 5, -5, 0], transition: { duration: 0.5 } }}
+                  whileHover={{ rotate: [0, -5, 5, -5, 0], scale: 1.1, transition: { duration: 0.5 } }}
+                  animate={{ boxShadow: ["0 10px 20px -10px rgba(0, 0, 0, 0.3)", "0 15px 30px -10px rgba(255, 52, 96, 0.3)", "0 10px 20px -10px rgba(0, 0, 0, 0.3)"] }}
+                  transition={{ duration: 4, repeat: Infinity, repeatType: "reverse" }}
                 >
                   <svg
                     width="72"
@@ -769,7 +1179,9 @@ export default function LandingPage() {
               >
                 <motion.div 
                   className="industry-icon"
-                  whileHover={{ rotate: [0, -5, 5, -5, 0], transition: { duration: 0.5 } }}
+                  whileHover={{ rotate: [0, -5, 5, -5, 0], scale: 1.1, transition: { duration: 0.5 } }}
+                  animate={{ boxShadow: ["0 10px 20px -10px rgba(0, 0, 0, 0.3)", "0 15px 30px -10px rgba(255, 52, 96, 0.3)", "0 10px 20px -10px rgba(0, 0, 0, 0.3)"] }}
+                  transition={{ duration: 4, repeat: Infinity, repeatType: "reverse" }}
                 >
                   <svg
                     width="72"
@@ -851,7 +1263,9 @@ export default function LandingPage() {
               >
                 <motion.div 
                   className="industry-icon"
-                  whileHover={{ rotate: [0, -5, 5, -5, 0], transition: { duration: 0.5 } }}
+                  whileHover={{ rotate: [0, -5, 5, -5, 0], scale: 1.1, transition: { duration: 0.5 } }}
+                  animate={{ boxShadow: ["0 10px 20px -10px rgba(0, 0, 0, 0.3)", "0 15px 30px -10px rgba(255, 52, 96, 0.3)", "0 10px 20px -10px rgba(0, 0, 0, 0.3)"] }}
+                  transition={{ duration: 4, repeat: Infinity, repeatType: "reverse" }}
                 >
                   <svg
                     width="72"
@@ -905,7 +1319,9 @@ export default function LandingPage() {
               >
                 <motion.div 
                   className="industry-icon"
-                  whileHover={{ rotate: [0, -5, 5, -5, 0], transition: { duration: 0.5 } }}
+                  whileHover={{ rotate: [0, -5, 5, -5, 0], scale: 1.1, transition: { duration: 0.5 } }}
+                  animate={{ boxShadow: ["0 10px 20px -10px rgba(0, 0, 0, 0.3)", "0 15px 30px -10px rgba(255, 52, 96, 0.3)", "0 10px 20px -10px rgba(0, 0, 0, 0.3)"] }}
+                  transition={{ duration: 4, repeat: Infinity, repeatType: "reverse" }}
                 >
                   <svg
                     width="72"
@@ -955,33 +1371,83 @@ export default function LandingPage() {
         </motion.section>
 
         {/* URMI Footer */}
-        <section className="urmi-footer">
+        <footer className="urmi-footer">
           <div className="footer-container">
-            <div className="footer-left">
-              <h2 className="footer-subtitle">UNIFIED</h2>
-              <h2 className="footer-subtitle">RESPONSE</h2>
-              <h2 className="footer-subtitle">MULTILINGUAL</h2>
-              <h2 className="footer-subtitle">INTERACTION</h2>
-
-              <div className="footer-contact">
-                <div className="contact-item">
-                  <span>Website:</span>
-                  <a
-                    href="http://www.cybranex.com"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    www.cybranex.com
-                  </a>
+            <div className="footer-content">
+              <div className="footer-left">
+                <div className="footer-branding">
+                  <h2 className="footer-subtitle">UNIFIED</h2>
+                  <h2 className="footer-subtitle">RESPONSE</h2>
+                  <h2 className="footer-subtitle">MULTILINGUAL</h2>
+                  <h2 className="footer-subtitle">INTERACTION</h2>
                 </div>
-                <div className="contact-item">
-                  <span>Email:</span>
-                  <a href="mailto:user@cybranex.com">user@cybranex.com</a>
+
+                {/* <div className="footer-tagline">
+                  Transforming customer interactions with AI-powered solutions
+                </div> */}
+              </div>
+
+              <div className="footer-right">
+                <div className="footer-links-section">
+                  <h3 className="footer-links-title">Connect With Us</h3>
+                  <div className="footer-contact">
+                    <div className="contact-item">
+                      <span>Website:</span>
+                      <a
+                        href="http://www.cybranex.com"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="Visit Cybranex website"
+                      >
+                        www.cybranex.com
+                      </a>
+                    </div>
+                    <div className="contact-item">
+                      <span>Email:</span>
+                      <a 
+                        href="mailto:user@cybranex.com"
+                        aria-label="Send email to user@cybranex.com"
+                      >
+                        user@cybranex.com
+                      </a>
+                    </div>
+                  </div>
+
+                  <div className="social-links">
+                    <a href="#" className="social-link" aria-label="LinkedIn">
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M16 8C17.5913 8 19.1174 8.63214 20.2426 9.75736C21.3679 10.8826 22 12.4087 22 14V21H18V14C18 13.4696 17.7893 12.9609 17.4142 12.5858C17.0391 12.2107 16.5304 12 16 12C15.4696 12 14.9609 12.2107 14.5858 12.5858C14.2107 12.9609 14 13.4696 14 14V21H10V14C10 12.4087 10.6321 10.8826 11.7574 9.75736C12.8826 8.63214 14.4087 8 16 8Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                        <path d="M6 9H2V21H6V9Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                        <path d="M4 6C5.10457 6 6 5.10457 6 4C6 2.89543 5.10457 2 4 2C2.89543 2 2 2.89543 2 4C2 5.10457 2.89543 6 4 6Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                      </svg>
+                    </a>
+                    <a href="#" className="social-link" aria-label="Twitter">
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M22 4.01C21 4.5 20.02 4.69 19 4.82C20.03 4.1 20.82 3 21 1.7C20.02 2.3 18.95 2.8 17.8 3C16.83 1.9 15.42 1.3 14 1.3C11.28 1.3 9.07 3.5 9.07 6.21C9.07 6.6 9.11 7 9.21 7.38C5.7 7.18 2.57 5.25 1.03 2.38C0.62 3.13 0.42 4.01 0.42 4.94C0.42 6.43 1.17 7.75 2.28 8.5C1.7 8.5 1.13 8.31 0.67 8.03C0.67 8.03 0.67 8.03 0.67 8.1C0.67 10.51 2.33 12.5 4.47 12.94C4.07 13.04 3.63 13.11 3.19 13.11C2.88 13.11 2.56 13.07 2.27 13C2.91 14.96 4.74 16.33 6.89 16.37C5.19 17.64 3.13 18.39 0.96 18.39C0.6 18.39 0.23 18.36 0 18.33C2.25 19.65 4.82 20.42 7.63 20.42C14 20.42 18.14 15.11 18.14 10.51C18.14 10.3 18.14 10.08 18.13 9.87C19.11 9.19 20.01 8.36 20.75 7.33L22 4.01Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                      </svg>
+                    </a>
+                    <a href="#" className="social-link" aria-label="GitHub">
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M9 19C4.7 20.4 4.7 16.5 3 16M15 21V17.5C15 16.5 15.1 16.1 14.5 15.5C17.3 15.2 20 14.1 20 9.5C19.9988 8.30564 19.5325 7.15578 18.7 6.3C19.0905 5.26128 19.0545 4.11707 18.6 3.1C18.6 3.1 17.5 2.8 15.6 4C13.9562 3.56345 12.2438 3.56345 10.6 4C8.7 2.8 7.6 3.1 7.6 3.1C7.14548 4.11707 7.10947 5.26128 7.5 6.3C6.66745 7.15578 6.20115 8.30564 6.2 9.5C6.2 14.1 8.9 15.2 11.7 15.5C11.1 16.1 11 16.5 11 17.5V21" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                      </svg>
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>
+            
+            <div className="footer-bottom">
+              <div className="copyright-text">
+                © {new Date().getFullYear()} URMI AI. All rights reserved.
+              </div>
+              <div className="footer-legal-links">
+                <a href="#" className="legal-link">Privacy Policy</a>
+                <a href="#" className="legal-link">Terms of Service</a>
+                <a href="#" className="legal-link">Cookie Policy</a>
+              </div>
+            </div>
           </div>
-        </section>
+        </footer>
       </div>
     </div>
   );

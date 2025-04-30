@@ -858,6 +858,42 @@ export default function PhoneNumbers() {
                   </form>
                 </div>
               </div>
+
+              <div className="sample-prompts-section">
+                <div className="sample-prompts-header">
+                  <svg className="sample-prompts-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M18.5 15.5V18.5C18.5 19.0523 18.0523 19.5 17.5 19.5H6.5C5.94772 19.5 5.5 19.0523 5.5 18.5V17.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+                    <path d="M8.5 15.5V11.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+                    <path d="M5 11.4998L11.8308 5.56233C12.1925 5.24628 12.7616 5.25029 13.1185 5.57135L18.5 10.4998" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+                    <path d="M14.5 11.5V15.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+                  </svg>
+                  <h3 className="sample-prompts-title">Sample Prompts</h3>
+                </div>
+                
+                <div className="sample-prompts-body">
+                  <p className="sample-prompts-description">
+                    Click on any sample prompt below to automatically populate the Prompt for LLM field. These templates provide a starting point for your AI phone assistant configuration.
+                  </p>
+                  
+                  <div className="sample-prompts-container">
+                    {samplePrompts.map((prompt) => (
+                      <div 
+                        key={prompt.id} 
+                        className="sample-prompt-card" 
+                        onClick={() => handleSamplePromptClick(prompt.content)}
+                      >
+                        <h4 className="sample-prompt-title">
+                          <svg className="sample-prompt-type-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M15.5 8.5L15.6716 8.32843C15.2909 7.94774 14.7091 7.94774 14.3284 8.32843L14.5 8.5H15.5ZM20.5 13.5L20.6716 13.6716C21.0621 13.281 21.0621 12.719 20.6716 12.3284L20.5 13.5ZM14.5 18.5L14.3284 18.6716C14.7091 19.0523 15.2909 19.0523 15.6716 18.6716L14.5 18.5ZM9.5 13.5L9.32843 13.3284C8.93774 13.7091 8.93774 14.2909 9.32843 14.6716L9.5 13.5ZM20 16.5V16.5L19.5 16.5C19.5 16.7761 19.7239 17 20 17V16.5ZM21 16.5V16C20.7239 16 20.5 16.2239 20.5 16.5H21ZM15.3284 8.67157L20.3284 13.6716L20.6716 13.3284L15.6716 8.32843L15.3284 8.67157ZM20.3284 13.3284L15.3284 18.3284L15.6716 18.6716L20.6716 13.6716L20.3284 13.3284ZM14.6716 18.3284L9.67157 13.3284L9.32843 13.6716L14.3284 18.6716L14.6716 18.3284ZM9.67157 13.6716L14.6716 8.67157L14.3284 8.32843L9.32843 13.3284L9.67157 13.6716ZM4 8C4 5.79086 5.79086 4 8 4V3C5.23858 3 3 5.23858 3 8H4ZM4 12V8H3V12H4ZM8 16C5.79086 16 4 14.2091 4 12H3C3 14.7614 5.23858 17 8 17V16ZM19.5 15V16.5H20.5V15H19.5ZM20.5 17H21.5V16H20.5V17ZM21.5 17C22.3284 17 23 16.3284 23 15.5H22C22 15.7761 21.7761 16 21.5 16V17ZM20.5 15.5C20.5 16.3284 21.1716 17 22 17V16C21.7239 16 21.5 15.7761 21.5 15.5H20.5Z" fill="currentColor"/>
+                          </svg>
+                          {prompt.title}
+                        </h4>
+                        <p className="sample-prompt-content">{prompt.content}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
               
               <div className="excel-template-section">
                 <h3 className="excel-template-title">
@@ -912,41 +948,7 @@ export default function PhoneNumbers() {
                 </a>
               </div>
               
-              <div className="sample-prompts-section">
-                <div className="sample-prompts-header">
-                  <svg className="sample-prompts-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M18.5 15.5V18.5C18.5 19.0523 18.0523 19.5 17.5 19.5H6.5C5.94772 19.5 5.5 19.0523 5.5 18.5V17.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
-                    <path d="M8.5 15.5V11.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
-                    <path d="M5 11.4998L11.8308 5.56233C12.1925 5.24628 12.7616 5.25029 13.1185 5.57135L18.5 10.4998" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
-                    <path d="M14.5 11.5V15.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
-                  </svg>
-                  <h3 className="sample-prompts-title">Sample Prompts</h3>
-                </div>
-                
-                <div className="sample-prompts-body">
-                  <p className="sample-prompts-description">
-                    Click on any sample prompt below to automatically populate the Prompt for LLM field. These templates provide a starting point for your AI phone assistant configuration.
-                  </p>
-                  
-                  <div className="sample-prompts-container">
-                    {samplePrompts.map((prompt) => (
-                      <div 
-                        key={prompt.id} 
-                        className="sample-prompt-card" 
-                        onClick={() => handleSamplePromptClick(prompt.content)}
-                      >
-                        <h4 className="sample-prompt-title">
-                          <svg className="sample-prompt-type-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M15.5 8.5L15.6716 8.32843C15.2909 7.94774 14.7091 7.94774 14.3284 8.32843L14.5 8.5H15.5ZM20.5 13.5L20.6716 13.6716C21.0621 13.281 21.0621 12.719 20.6716 12.3284L20.5 13.5ZM14.5 18.5L14.3284 18.6716C14.7091 19.0523 15.2909 19.0523 15.6716 18.6716L14.5 18.5ZM9.5 13.5L9.32843 13.3284C8.93774 13.7091 8.93774 14.2909 9.32843 14.6716L9.5 13.5ZM20 16.5V16.5L19.5 16.5C19.5 16.7761 19.7239 17 20 17V16.5ZM21 16.5V16C20.7239 16 20.5 16.2239 20.5 16.5H21ZM15.3284 8.67157L20.3284 13.6716L20.6716 13.3284L15.6716 8.32843L15.3284 8.67157ZM20.3284 13.3284L15.3284 18.3284L15.6716 18.6716L20.6716 13.6716L20.3284 13.3284ZM14.6716 18.3284L9.67157 13.3284L9.32843 13.6716L14.3284 18.6716L14.6716 18.3284ZM9.67157 13.6716L14.6716 8.67157L14.3284 8.32843L9.32843 13.3284L9.67157 13.6716ZM4 8C4 5.79086 5.79086 4 8 4V3C5.23858 3 3 5.23858 3 8H4ZM4 12V8H3V12H4ZM8 16C5.79086 16 4 14.2091 4 12H3C3 14.7614 5.23858 17 8 17V16ZM19.5 15V16.5H20.5V15H19.5ZM20.5 17H21.5V16H20.5V17ZM21.5 17C22.3284 17 23 16.3284 23 15.5H22C22 15.7761 21.7761 16 21.5 16V17ZM20.5 15.5C20.5 16.3284 21.1716 17 22 17V16C21.7239 16 21.5 15.7761 21.5 15.5H20.5Z" fill="currentColor"/>
-                          </svg>
-                          {prompt.title}
-                        </h4>
-                        <p className="sample-prompt-content">{prompt.content}</p>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
+              
             </div>
           </div>
         </div>
