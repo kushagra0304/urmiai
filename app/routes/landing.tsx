@@ -140,14 +140,14 @@ export default function LandingPage() {
               z: videoZ,
               scale: videoScale,
               filter: useTransform(videoBlur, (value) => `blur(${value}px)`),
-              boxShadow: useTransform(
-                scrollY,
-                [0, 500],
-                [
-                  "0 10px 30px rgba(0, 0, 0, 0.5)",
-                  "0 20px 50px rgba(0, 0, 0, 0.7)",
-                ]
-              ),
+              // boxShadow: useTransform(
+              //   scrollY,
+              //   [0, 500],
+              //   [
+              //     "0 10px 30px rgba(0, 0, 0, 0.5)",
+              //     "0 20px 50px rgba(0, 0, 0, 0.7)",
+              //   ]
+              // ),
             }}
           >
             <video autoPlay loop muted playsInline src="/assets/video.mp4">
@@ -878,23 +878,18 @@ export default function LandingPage() {
                   transition={{ duration: 0.8, delay: 0.2 }}
                 >
                   <span className="gradient-text">OPTIMIZE</span>
-                  {' . '}
+                  {/* {' . '} */}
                   <motion.span
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: 1 }}
                     transition={{ duration: 1, delay: 0.5 }}
                   >
-                    GROW
+                    &nbsp;GROW&nbsp;
                   </motion.span>
-                  {'. '}
+                  {/* {'. '} */}
                   <span className="gradient-text">ENHANCE</span>
                 </motion.h2>
-                <motion.div 
-                  className="title-accent-line"
-                  initial={{ width: 0, opacity: 0 }}
-                  whileInView={{ width: '120px', opacity: 1 }}
-                  transition={{ duration: 1, delay: 0.8 }}
-                />
+                {/* Bottom line removed as requested */}
               </div>
             </motion.div>
 
