@@ -246,7 +246,7 @@ export default function LandingPage() {
                     repeatType: "reverse"
                   }}
                 >
-                  What is URMI?
+                  Meet Urmi AI
                 </motion.h1>
               </motion.div>
               <motion.p
@@ -255,7 +255,9 @@ export default function LandingPage() {
                 transition={{ duration: 0.6, delay: 0.4 }}
                 viewport={{ once: true }}
               >
-                URMI is an advanced AI-driven voice assistant designed to transform customer interactions across various industries. Leveraging cutting-edge natural language processing and machine learning technologies, URMI delivers seamless, human-like conversations that enhance engagement while maintaining efficiency and scalability.
+                Urmi is an AI driven multilingual voice assistant designed to transform customer interactions across various industries.<br/>
+                Urmi leverages cutting-edge NLP and machine learning, enabling seamless, human-like conversations to boost engagement, efficiency, and scalability.
+
               </motion.p>
               
               <div className="urmi-highlights">
@@ -263,7 +265,7 @@ export default function LandingPage() {
                   className="highlight-item"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.5 }}
+                  transition={{ duration: 0.4, delay: 0.25 }}
                   viewport={{ once: true }}
                   whileHover={{ y: -8, boxShadow: "0 10px 25px -10px rgba(255, 52, 96, 0.5)" }}
                 >
@@ -286,7 +288,7 @@ export default function LandingPage() {
                   className="highlight-item"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.6 }}
+                  transition={{ duration: 0.4, delay: 0.3 }}
                   viewport={{ once: true }}
                   whileHover={{ y: -8, boxShadow: "0 10px 25px -10px rgba(255, 52, 96, 0.5)" }}
                 >
@@ -343,7 +345,7 @@ export default function LandingPage() {
                   }}
                   whileTap={{ scale: 0.98 }}
                 >
-                  <span>Discover Capabilities</span>
+                  <span>Book a demo</span>
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M5 12H19" stroke="#ffffff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                     <path d="M12 5L19 12L12 19" stroke="#ffffff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
@@ -355,28 +357,70 @@ export default function LandingPage() {
 
           <div className="embrace-section">
             <div className="embrace-left">
-              <motion.h3
-                style={{ fontFamily: "Space Grotesk" }}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
+              <motion.div
+                className="embrace-content-wrapper"
+                initial={{ opacity: 0, x: -30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.7, ease: "easeOut" }}
                 viewport={{ once: false }}
               >
-                Embrace the change
-              </motion.h3>
-              <motion.p
-                style={{ fontFamily: "Space Grotesk" }}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.4 }}
-                viewport={{ once: false }}
-              >
-                CRM integration, AND real-time voice assistance, URMI is built
-                to adapt for you.
-              </motion.p>
+                <motion.h3
+                  style={{ fontFamily: "Space Grotesk" }}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.2 }}
+                  viewport={{ once: false }}
+                  className="embrace-title"
+                >
+                  <span className="embrace-highlight">Embrace</span> the change
+                </motion.h3>
+                <motion.div 
+                  className="embrace-accent-line"
+                  initial={{ width: 0 }}
+                  whileInView={{ width: "80px" }}
+                  transition={{ duration: 0.8, delay: 0.3 }}
+                  viewport={{ once: false }}
+                />
+                <motion.p
+                  style={{ fontFamily: "Space Grotesk" }}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.4 }}
+                  viewport={{ once: false }}
+                  className="embrace-description"
+                >
+                  Urmi integrates with existing CRM, An AI built to adapt with personalised business models and providing branded assistance to clients.
+                </motion.p>
+                <motion.div
+                  className="embrace-features"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.6 }}
+                  viewport={{ once: false }}
+                >
+                  <div className="embrace-feature-item">
+                    <div className="embrace-feature-icon">✓</div>
+                    <span>Seamless Integration</span>
+                  </div>
+                  <div className="embrace-feature-item">
+                    <div className="embrace-feature-icon">✓</div>
+                    <span>Personalized Experience</span>
+                  </div>
+                  <div className="embrace-feature-item">
+                    <div className="embrace-feature-icon">✓</div>
+                    <span>Brand Consistency</span>
+                  </div>
+                </motion.div>
+              </motion.div>
             </div>
             <div className="embrace-right">
-              <div className="reduced-cost">
+              <motion.div 
+                className="reduced-cost"
+                initial={{ opacity: 0, x: 30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.7, ease: "easeOut" }}
+                viewport={{ once: false }}
+              >
                 <motion.svg
                   initial={{ opacity: 0, x: 50 }}
                   whileInView={{ opacity: 1, x: 0 }}
@@ -397,7 +441,7 @@ export default function LandingPage() {
                     fill="#888888"
                   />
                 </motion.svg>
-              </div>
+              </motion.div>
             </div>
           </div>
 
@@ -405,6 +449,157 @@ export default function LandingPage() {
             <p>SEAMLESS INTEGRATION SUPPORT</p>
           </div>
         </section>
+
+        {/* Capabilities Section */}
+        <motion.section 
+          className="capabilities-section"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.4 }}
+          viewport={{ once: false }}
+        >
+          <motion.div 
+            className="capabilities-container"
+            initial={{ y: 40 }}
+            whileInView={{ y: 0 }}
+            transition={{ duration: 0.7, ease: "easeOut" }}
+          >
+            <motion.div 
+              className="capabilities-banner"
+              initial={{ scale: 0.95, opacity: 0 }}
+              whileInView={{ scale: 1, opacity: 1 }}
+              transition={{ duration: 0.8, ease: [0.4, 0, 0.2, 1] }}
+            >
+              <div className="capabilities-title-container">
+                <motion.h2
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: 0.2 }}
+                >
+                  <span className="gradient-text">OPTIMIZE</span>
+                  {/* {' . '} */}
+                  <motion.span
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    transition={{ duration: 1, delay: 0.5 }}
+                  >
+                    &nbsp;GROW&nbsp;
+                  </motion.span>
+                  {/* {'. '} */}
+                  <span className="gradient-text">ENHANCE</span>
+                </motion.h2>
+                {/* Bottom line removed as requested */}
+              </div>
+            </motion.div>
+
+            <div className="capabilities-columns">
+              <motion.div 
+                className="capabilities-column"
+                initial={{ opacity: 0, x: -30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6, delay: 0.3 }}
+              >
+                <motion.h3
+                  initial={{ opacity: 0, y: -10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.4 }}
+                >Capabilities</motion.h3>
+                <motion.div 
+                  className="capabilities-feature"
+                  initial={{ opacity: 0, y: 15 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.5 }}
+                  whileHover={{ scale: 1.03, transition: { duration: 0.2 } }}
+                >
+                  <p>
+                    Delivers natural context-aware interactions for smooth customer experience
+                  </p>
+                </motion.div>
+                <motion.div 
+                  className="capabilities-feature"
+                  initial={{ opacity: 0, y: 15 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.6 }}
+                  whileHover={{ scale: 1.03, transition: { duration: 0.2 } }}
+                >
+                  <p>
+                    Seamlessly switches between languages ensuring no loss due to language barrier
+                  </p>
+                </motion.div>
+                <motion.div 
+                  className="capabilities-feature"
+                  initial={{ opacity: 0, y: 15 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.7 }}
+                  whileHover={{ scale: 1.03, transition: { duration: 0.2 } }}
+                >
+                  <p>
+                    Provides personalised experience adhering to company's metrics and client's requirements
+                  </p>
+                </motion.div>
+                <motion.div 
+                  className="capabilities-feature"
+                  initial={{ opacity: 0, y: 15 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.8 }}
+                  whileHover={{ scale: 1.03, transition: { duration: 0.2 } }}
+                >
+                  <p>
+                    Effortlessly manages bulk inbound and outbound calls
+                  </p>
+                </motion.div>
+              </motion.div>
+
+              <motion.div 
+                className="capabilities-column"
+                initial={{ opacity: 0, x: 30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6, delay: 0.4 }}
+              >
+                <motion.h3
+                  initial={{ opacity: 0, y: -10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.5 }}
+                >Integration and Control</motion.h3>
+                <motion.div 
+                  className="capabilities-feature"
+                  initial={{ opacity: 0, y: 15 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.6 }}
+                  whileHover={{ scale: 1.03, transition: { duration: 0.2 } }}
+                >
+                  <p>
+                    Access URMI's dashboard to track real time updates, Gain Call and conversion statistics as well as insights for broader understanding and calibration
+                  </p>
+                </motion.div>
+                <motion.div 
+                  className="capabilities-feature"
+                  initial={{ opacity: 0, y: 15 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.7 }}
+                  whileHover={{ scale: 1.03, transition: { duration: 0.2 } }}
+                >
+                  <p>
+                    Customise the Avatar's tone, voice as well as values to promote your unique business model and enhance marketing
+                  </p>
+                </motion.div>
+                <motion.div 
+                  className="capabilities-feature"
+                  initial={{ opacity: 0, y: 15 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.8 }}
+                  whileHover={{ scale: 1.03, transition: { duration: 0.2 } }}
+                >
+                  <p>
+                    Seamlessly connects with platforms like Zoho, HubSpot, and
+                    Jira. Customizable AI models for healthcare, travel,
+                    e-commerce, finance, and more.
+                  </p>
+                </motion.div>
+              </motion.div>
+            </div>
+          </motion.div>
+        </motion.section>
 
         {/* Pricing Section */}
         <section className="pricing-section">
@@ -604,21 +799,40 @@ export default function LandingPage() {
               transition={{ duration: 0.6, delay: 0.9 }}
               viewport={{ once: true }}
             >
-              <motion.div className="pricing-guarantee">
+              <div>
                 <motion.div 
-                  className="guarantee-icon"
-                  initial={{ scale: 0 }}
-                  whileInView={{ scale: 1 }}
-                  transition={{ duration: 0.5, delay: 1.0 }}
-                  viewport={{ once: true }}
+                  className="pricing-guarantee"
+                  whileHover={{
+                    scale: 1.05,
+                    backgroundColor: "rgba(255, 52, 96, 0.1)",
+                    boxShadow: "0 15px 35px -15px rgba(255, 52, 96, 0.3)",
+                    transition: { duration: 0.3 }
+                  }}
                 >
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="#FF3460" strokeWidth="1.5"/>
-                    <path d="M8 12L11 15L16 9" stroke="#FF3460" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>
+                  <motion.div 
+                    className="guarantee-icon"
+                    initial={{ scale: 0 }}
+                    whileInView={{ scale: 1 }}
+                    transition={{ duration: 0.5, delay: 1.0 }}
+                    viewport={{ once: true }}
+                  >
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="#FF3460" strokeWidth="1.5"/>
+                      <path d="M8 12L11 15L16 9" stroke="#FF3460" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                  </motion.div>
+                  <div className="guarantee-content">
+                    <p>30-day satisfaction guarantee with all plans</p>
+                    <div className="guarantee-details">
+                      <ul>
+                        <li>Full refund if not satisfied</li>
+                        <li>No questions asked policy</li>
+                        <li>Dedicated support during trial</li>
+                      </ul>
+                    </div>
+                  </div>
                 </motion.div>
-                <p>30-day satisfaction guarantee with all plans</p>
-              </motion.div>
+              </div>
               <motion.a
                 href="#contact"
                 className="pricing-cta-button"
@@ -851,149 +1065,28 @@ export default function LandingPage() {
           </div>
         </section>
 
-        {/* Capabilities Section */}
-        <motion.section 
-          className="capabilities-section"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.5 }}
-          viewport={{ once: false }}
-        >
-          <motion.div 
-            className="capabilities-container"
-            initial={{ y: 40 }}
-            whileInView={{ y: 0 }}
-            transition={{ duration: 0.7, ease: "easeOut" }}
-          >
-            <motion.div 
-              className="capabilities-banner"
-              initial={{ scale: 0.95, opacity: 0 }}
-              whileInView={{ scale: 1, opacity: 1 }}
-              transition={{ duration: 0.8, ease: [0.4, 0, 0.2, 1] }}
-            >
-              <div className="capabilities-title-container">
-                <motion.h2
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8, delay: 0.2 }}
-                >
-                  <span className="gradient-text">OPTIMIZE</span>
-                  {/* {' . '} */}
-                  <motion.span
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
-                    transition={{ duration: 1, delay: 0.5 }}
-                  >
-                    &nbsp;GROW&nbsp;
-                  </motion.span>
-                  {/* {'. '} */}
-                  <span className="gradient-text">ENHANCE</span>
-                </motion.h2>
-                {/* Bottom line removed as requested */}
-              </div>
-            </motion.div>
-
-            <div className="capabilities-columns">
-              <motion.div 
-                className="capabilities-column"
-                initial={{ opacity: 0, x: -30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6, delay: 0.3 }}
-              >
-                <motion.h3
-                  initial={{ opacity: 0, y: -10 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.4 }}
-                >Capabilities</motion.h3>
-                <motion.div 
-                  className="capabilities-feature"
-                  initial={{ opacity: 0, y: 15 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.5 }}
-                  whileHover={{ scale: 1.03, transition: { duration: 0.2 } }}
-                >
-                  <p>
-                    Delivers natural, context-aware interactions for both
-                    inbound and outbound calls
-                  </p>
-                </motion.div>
-                <motion.div 
-                  className="capabilities-feature"
-                  initial={{ opacity: 0, y: 15 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.6 }}
-                  whileHover={{ scale: 1.03, transition: { duration: 0.2 } }}
-                >
-                  <p>
-                    Communicates effortlessly across different languages and
-                    dialects. Provides detailed insights and call recordings to
-                    optimize customer interactions.
-                  </p>
-                </motion.div>
-              </motion.div>
-
-              <motion.div 
-                className="capabilities-column"
-                initial={{ opacity: 0, x: 30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6, delay: 0.4 }}
-              >
-                <motion.h3
-                  initial={{ opacity: 0, y: -10 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.5 }}
-                >Integration and Control</motion.h3>
-                <motion.div 
-                  className="capabilities-feature"
-                  initial={{ opacity: 0, y: 15 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.6 }}
-                  whileHover={{ scale: 1.03, transition: { duration: 0.2 } }}
-                >
-                  <p>
-                    Seamlessly connects with platforms like Zoho, HubSpot, and
-                    Jira. Customizable AI models for healthcare, travel,
-                    e-commerce, finance, and more.
-                  </p>
-                </motion.div>
-                <motion.div 
-                  className="capabilities-feature"
-                  initial={{ opacity: 0, y: 15 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.7 }}
-                  whileHover={{ scale: 1.03, transition: { duration: 0.2 } }}
-                >
-                  <p>
-                    Your URMI will be in control. Real-time Updates in
-                    Dashboard. Visualized statistics for better Understanding
-                    and Caliberation.
-                  </p>
-                </motion.div>
-              </motion.div>
-            </div>
-          </motion.div>
-        </motion.section>
+        
 
         {/*  Industry Use Cases Section */}
         <motion.section 
           className="industry-section"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.4 }}
           viewport={{ once: false }}
         >
           <motion.div 
             className="industry-container"
             initial={{ y: 50 }}
             whileInView={{ y: 0 }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
+            transition={{ duration: 0.4, ease: "easeOut" }}
           >
             <div className="section-header-container">
               <motion.h2 
                 className="industry-title"
                 initial={{ opacity: 0, y: -20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.7, delay: 0.1 }}
+                transition={{ duration: 0.5, delay: 0.05 }}
               >
                 INDUSTRY USE CASES
               </motion.h2>
@@ -1001,7 +1094,7 @@ export default function LandingPage() {
                 className="industry-subtitle"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.7, delay: 0.3 }}
+                transition={{ duration: 0.5, delay: 0.1 }}
               >
                 Discover how URMI transforms operations across various sectors
               </motion.p>
@@ -1012,7 +1105,7 @@ export default function LandingPage() {
                 className="industry-card"
                 initial={{ opacity: 0, scale: 0.9, y: 30 }}
                 whileInView={{ opacity: 1, scale: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.1, type: "spring", stiffness: 100 }}
+                transition={{ duration: 0.4, delay: 0.05, type: "spring", stiffness: 120 }}
                 whileHover={{ scale: 1.02, y: -10 }}
                 whileTap={{ scale: 0.98 }}
               >
@@ -1057,7 +1150,7 @@ export default function LandingPage() {
                   className="industry-content"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.2 }}
+                  transition={{ duration: 0.4, delay: 0.1 }}
                 >
                   <h3>Healthcare</h3>
                   <p>Automated Appointment Scheduling</p>
@@ -1069,7 +1162,7 @@ export default function LandingPage() {
                 className="industry-card"
                 initial={{ opacity: 0, scale: 0.9, y: 30 }}
                 whileInView={{ opacity: 1, scale: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.2, type: "spring", stiffness: 100 }}
+                transition={{ duration: 0.4, delay: 0.1, type: "spring", stiffness: 120 }}
                 whileHover={{ scale: 1.02, y: -10 }}
                 whileTap={{ scale: 0.98 }}
               >
@@ -1153,7 +1246,7 @@ export default function LandingPage() {
                   className="industry-content"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.3 }}
+                  transition={{ duration: 0.4, delay: 0.15 }}
                 >
                   <h3>HR & Recruitment</h3>
                   <p>AI-Powered Interview Scheduling</p>
@@ -1169,7 +1262,7 @@ export default function LandingPage() {
                 className="industry-card"
                 initial={{ opacity: 0, scale: 0.9 }}
                 whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.5, delay: 0.3 }}
+                transition={{ duration: 0.4, delay: 0.15 }}
                 whileHover={{ scale: 1.05, boxShadow: "0px 8px 24px rgba(0, 0, 0, 0.15)" }}
               >
                 <motion.div 
@@ -1238,7 +1331,7 @@ export default function LandingPage() {
                   className="industry-content"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.4 }}
+                  transition={{ duration: 0.4, delay: 0.2 }}
                 >
                   <h3>Travel & Hospitality</h3>
                   <p>Flight & Hotel Booking Assistance</p>
@@ -1253,7 +1346,7 @@ export default function LandingPage() {
                 className="industry-card"
                 initial={{ opacity: 0, scale: 0.9 }}
                 whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.5, delay: 0.4 }}
+                transition={{ duration: 0.4, delay: 0.2 }}
                 whileHover={{ scale: 1.05, boxShadow: "0px 8px 24px rgba(0, 0, 0, 0.15)" }}
               >
                 <motion.div 
@@ -1295,7 +1388,7 @@ export default function LandingPage() {
                   className="industry-content"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.5 }}
+                  transition={{ duration: 0.4, delay: 0.25 }}
                 >
                   <h3>Banking & Finance</h3>
                   <p>Loan & Mortgage Inquiry Handling</p>
@@ -1309,7 +1402,7 @@ export default function LandingPage() {
                 className="industry-card"
                 initial={{ opacity: 0, scale: 0.9 }}
                 whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.5, delay: 0.5 }}
+                transition={{ duration: 0.4, delay: 0.25 }}
                 whileHover={{ scale: 1.05, boxShadow: "0px 8px 24px rgba(0, 0, 0, 0.15)" }}
               >
                 <motion.div 
@@ -1351,7 +1444,7 @@ export default function LandingPage() {
                   className="industry-content"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.6 }}
+                  transition={{ duration: 0.4, delay: 0.3 }}
                 >
                   <h3>Corporate & Customer Service</h3>
                   <p>
@@ -1371,10 +1464,10 @@ export default function LandingPage() {
             <div className="footer-content">
               <div className="footer-left">
                 <div className="footer-branding">
-                  <h2 className="footer-subtitle">UNIFIED</h2>
-                  <h2 className="footer-subtitle">RESPONSE</h2>
-                  <h2 className="footer-subtitle">MULTILINGUAL</h2>
-                  <h2 className="footer-subtitle">INTERACTION</h2>
+                  <h2 className="footer-subtitle"><span style={{ color: "#ff3460" }}>U</span>NIFIED</h2>
+                  <h2 className="footer-subtitle"><span style={{ color: "#ff3460" }}>R</span>ESPONSE</h2>
+                  <h2 className="footer-subtitle"><span style={{ color: "#ff3460" }}>M</span>ULTILINGUAL</h2>
+                  <h2 className="footer-subtitle"><span style={{ color: "#ff3460" }}>I</span>NTERACTION</h2>
                 </div>
 
                 {/* <div className="footer-tagline">
