@@ -462,24 +462,46 @@ export default function PhoneNumbers() {
     }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
-    // Here you would typically send the data to your backend
-    console.log("Form submitted:", formData);
-    
-    // For demo purposes, just show an alert
-    alert("Starting call with configured phone number!");
-    
-    // Reset form
-    setFormData({
-      phoneNumber: "",
-      name: "",
-      companyName: "",
-      industryType: "",
-      designation: "",
-      prompt: ""
-    });
+
+    // Call the backend API
+    try {
+      const response = await fetch("http://ec2-13-233-214-86.ap-south-1.compute.amazonaws.com:8000/dispatch", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          phone_number: formData.phoneNumber,
+          prompt: formData.prompt,
+          name: formData.name
+        })
+      });
+
+      if (!response.ok) {
+        throw new Error(`Server responded with status ${response.status}`);
+      }
+
+      const result = await response.json();
+      console.log("Call dispatched:", result);
+
+      alert("Starting call with configured phone number!");
+
+      // Reset form
+      setFormData({
+        phoneNumber: "",
+        name: "",
+        companyName: "",
+        industryType: "",
+        designation: "",
+        prompt: ""
+      });
+
+    } catch (error) {
+      console.error("Error dispatching call:", error);
+      alert("Failed to start the call. Please try again.");
+    }
   };
 
   const handleExcelUpload = (e: ChangeEvent<HTMLInputElement>) => {
