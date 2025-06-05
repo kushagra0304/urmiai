@@ -21,6 +21,7 @@
     "firebase": "^11.6.0",
     "framer-motion": "^12.8.2",
     "isbot": "^5.1.17",
+    "livekit-client": "^2.13.3",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-firebase-hooks": "^5.1.1",

@@ -8,6 +8,8 @@ import Sidebar from "../components/dashboard/Sidebar";
 import DashboardLayout from "../components/dashboard/DashboardLayout";
 // @ts-ignore
 import * as XLSX from 'xlsx';
+import { dispatchCall } from "../services";
+import { Room } from "livekit-client";
 
 // Sample prompts data
 const samplePrompts = [
@@ -462,47 +464,56 @@ export default function PhoneNumbers() {
     }
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
 
-    // Call the backend API
-    try {
-      const response = await fetch("http://ec2-13-233-214-86.ap-south-1.compute.amazonaws.com:8000/dispatch", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-          phone_number: formData.phoneNumber,
-          prompt: formData.prompt,
-          name: formData.name
-        })
-      });
+  try {
+    const result = await dispatchCall({
+      phone_number: formData.phoneNumber,
+      prompt: formData.prompt,
+      name: formData.name
+    });
 
-      if (!response.ok) {
-        throw new Error(`Server responded with status ${response.status}`);
-      }
+    // console.log(import.meta.env.LIVEKIT_URL)
 
-      const result = await response.json();
-      console.log("Call dispatched:", result);
+    console.log("Call dispatched:", result);
 
-      alert("Starting call with configured phone number!");
+    // const room = new Room()
+    // await room.connect("wss://zoomtest-gvgpc20k.livekit.cloud", result.)
 
-      // Reset form
-      setFormData({
-        phoneNumber: "",
-        name: "",
-        companyName: "",
-        industryType: "",
-        designation: "",
-        prompt: ""
-      });
+    // await room.localParticipant.enableCameraAndMicrophone();
 
-    } catch (error) {
-      console.error("Error dispatching call:", error);
-      alert("Failed to start the call. Please try again.");
-    }
-  };
+    // console.log(room.remoteParticipants.size)
+    // let i = 0
+
+    // while(room.remoteParticipants.size !== 0) {
+    // while(true) {
+    //   console.log(room.remoteParticipants)
+    //   if(i > 90) {
+    //     break
+    //   }
+    //   i++
+    //   await new Promise(resolve => setTimeout(resolve, 1000));
+    // }
+
+    // room.disconnect();
+
+    // Reset form
+    setFormData({
+      phoneNumber: "",
+      name: "",
+      companyName: "",
+      industryType: "",
+      designation: "",
+      prompt: ""
+    });
+
+  } catch (error) {
+    console.error("Error dispatching call:", error);
+    alert("Failed to start the call. Please try again.");
+  }
+};
+
 
   const handleExcelUpload = (e: ChangeEvent<HTMLInputElement>) => {
     const files = e.target.files;
